@@ -80,7 +80,7 @@ def phaseshifts_from_height_map(height_map, wave_lengths, refractive_index):
     refractive index for light with specific wave length.
     '''
     # refractive index difference
-    delta_N = refractive_index - 1.
+    delta_N = refractive_index - 1.000277
     # wave number
     wave_nos = 2. * np.pi / wave_lengths
     # phase delay indiced by height field
@@ -99,7 +99,7 @@ def get_one_phase_shift_thickness(wave_lengths, refractive_index):
     two_pi_thickness = (2. * np.pi) / (wave_nos * delta_N) * 1.1
     return two_pi_thickness
 
-def attach_summaries(name, var, image=False, log_image=True):
+def attach_summaries(name, var, image=False, log_image=False):
     if image:
         tf.summary.image(name, var, max_outputs=3)
     if log_image:
@@ -109,6 +109,16 @@ def attach_summaries(name, var, image=False, log_image=True):
     tf.summary.scalar(name+'_min', tf.reduce_min(var))
     tf.summary.histogram(name+'_histogram', var)
 
+    # Attaching a tensor summary will allow us to retrieve the actual value of the
+    # height map just from the summary
+    tf.summary.tensor_summary(name, var)
+    
+def attach_img(name, var):
+    tf.summary.image(name, var, max_outputs=3)
+    tf.summary.scalar(name+'_mean', tf.reduce_mean(var))
+    tf.summary.scalar(name+'_max', tf.reduce_max(var))
+    tf.summary.scalar(name+'_min', tf.reduce_min(var))
+    
 
 def fftshift2d_tf(a_tensor):
     input_shape = a_tensor.shape.as_list()
@@ -337,12 +347,12 @@ class FresnelPropagation(Propagation):
 
         # We create a non-trainable variable so that this computation can be reused
         # from call to call.
-        tmp = self.wave_lengths*np.pi*-1.*squared_sum
-        print(tmp.shape)
-        constant_exp_part_init = tf.constant_initializer(self.wave_lengths*np.pi*-1.*squared_sum)
+        tmp = tf.float64(self.wave_lengths*np.pi*-1.*squared_sum)
+        constant_exp_part_init = tf.constant_initializer(tmp)
         constant_exponent_part = tf.get_variable("Fresnel_kernel_constant_exponent_part",
                                                  initializer=constant_exp_part_init,
                                                  shape=padded_input_field.shape,
+                                                 dtype=tf.float64,
                                                  trainable=False)
 
         H = compl_exp_tf( self.distance * constant_exponent_part, dtype=tf.complex128,
@@ -385,6 +395,7 @@ class PhasePlate():
                  wave_lengths,
                  height_map,
                  refractive_index,
+                 phase_shifts=None,
                  height_tolerance=None,
                  lateral_tolerance=None):
 
@@ -393,6 +404,8 @@ class PhasePlate():
         self.refractive_index=refractive_index
         self.height_tolerance=height_tolerance
         self.lateral_tolerance=lateral_tolerance
+        if phase_shifts is not None:
+            self.phase_shifts=compl_exp_tf(phase_shifts)
 
         self._build()
 
@@ -403,10 +416,12 @@ class PhasePlate():
                                                  minval=-self.height_tolerance,
                                                  maxval=self.height_tolerance,
                                                  dtype=tf.float64)
+            print("Phase plate with manufacturing tolerance %0.2e"%self.height_tolerance)
 
         # TODO: Add manufacturing tolerance on lateral shift
-
-        self.phase_shifts = phaseshifts_from_height_map(self.height_map,
+        
+        if self.height_map is not None:
+            self.phase_shifts = phaseshifts_from_height_map(self.height_map,
                                                         self.wave_lengths,
                                                         self.refractive_index)
 
@@ -446,12 +461,13 @@ def square_aperture(input_field, aperture_fraction):
     return element(input_field)
 
 
-def circular_aperture(input_field):
+def circular_aperture(input_field, max_val=None):
     input_shape = input_field.shape.as_list()
     [x, y] = np.mgrid[-input_shape[1] // 2: input_shape[1] // 2,
                       -input_shape[2] // 2: input_shape[2] // 2].astype(np.float64)
 
-    max_val = np.amax(x)
+    if max_val is None:
+        max_val = np.amax(x)
 
     r = np.sqrt(x ** 2 + y ** 2)[None,:,:,None]
     return tf.where(r<max_val,
@@ -459,7 +475,7 @@ def circular_aperture(input_field):
                     tf.zeros(shape=input_shape,dtype=input_field.dtype))
 
 
-def phase_shift_element(input_field,
+def phase_shift_element_old(input_field,
                         name,
                         block_size=1,
                         phase_shift_initializer=None,
@@ -491,9 +507,49 @@ def phase_shift_element(input_field,
 
         input_field = tf.cast(input_field, tf.complex128)
         return tf.multiply(input_field, phase_shifts_exp, name='phase_plate_shift')
+    
+def phase_shift_element(map_shape,
+                       name,
+                       wave_lengths,
+                       block_size=1,
+                       phase_shift_initializer=None,
+                       phase_shift_regularizer=None,
+                       height_tolerance=None, # Default height tolerance is 2 nm.
+                       refractive_index=1.5):
+
+        b, h, w, c = map_shape
+        input_shape = [b, h//block_size, w//block_size, c]
+
+        if phase_shift_initializer is None:
+            init_phase_shift_value = np.ones(shape=input_shape, dtype=np.float64) * 1e-4
+            phase_shift_initializer = tf.constant_initializer(init_phase_shift_value)
+
+        with tf.variable_scope(name, reuse=False):
+            phase_shift_var = tf.get_variable(name="phase_shift_sqrt",
+                                             shape=input_shape,
+                                             dtype=tf.float64,
+                                             trainable=True,
+                                             initializer=phase_shift_initializer)
+
+            phase_shift_full = tf.image.resize_images(phase_shift_var, map_shape[1:3],
+                                                     method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+            phase_shifts = tf.square(phase_shift_full, name='phase_shift')
+
+            if phase_shift_regularizer is not None:
+                tf.contrib.layers.apply_regularization(phase_shift_regularizer, weights_list=[phase_shifts])
+
+            attach_summaries("phase_shift", phase_shifts, image=True)
+
+        element =  PhasePlate(wave_lengths=wave_lengths,
+                              height_map=None,
+                              phase_shifts=phase_shifts,
+                              refractive_index=refractive_index,
+                              height_tolerance=height_tolerance)
+
+        return element
 
 
-def height_map_element(input_field,
+def height_map_element(map_shape,
                        name,
                        wave_lengths,
                        block_size=1,
@@ -502,7 +558,6 @@ def height_map_element(input_field,
                        height_tolerance=None, # Default height tolerance is 2 nm.
                        refractive_index=1.5):
 
-        map_shape = input_field.shape.as_list()
         b, h, w, c = map_shape
         input_shape = [b, h//block_size, w//block_size, c]
 
@@ -525,14 +580,13 @@ def height_map_element(input_field,
                 tf.contrib.layers.apply_regularization(height_map_regularizer, weights_list=[height_map])
 
             attach_summaries("Height_map", height_map, image=True)
-            tf.summary.tensor_summary("Height_map_slice", height_map[:, h//(block_size*2), w//(block_size*2),:])
 
         element =  PhasePlate(wave_lengths=wave_lengths,
                               height_map=height_map,
                               refractive_index=refractive_index,
                               height_tolerance=height_tolerance)
 
-        return element(input_field)
+        return element
 
 def plano_convex_lens(input_field,
                       focal_length,
@@ -718,6 +772,7 @@ class OpticalSystem(abc.ABC):
 
     def get_sensor_img(self,
                        input_img,
+                       noise_sigma=0.001,
                        depth_dependent=False,
                        depth_map=None):
         """"""
@@ -737,7 +792,8 @@ class OpticalSystem(abc.ABC):
         # Down sample measured image to match sensor resolution.
         if self.upsample:
             sensor_img = area_downsampling_tf(sensor_img, self.sensor_resolution[0])
-        noisy_img = self.noise_model(sensor_img)
+        noisy_img = self.noise_model(sensor_img, noise_sigma)
+        print("Additive noise of %0.2e"%noise_sigma)
         attach_summaries("Sensor_img", noisy_img, image=True, log_image=False)
         return noisy_img
 

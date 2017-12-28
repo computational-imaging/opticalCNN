@@ -109,5 +109,5 @@ if __name__=='__main__':
                    starter_learning_rate = 1e-2,
                    num_steps_until_save=5000,
                    num_steps_until_summary=200,
-                   logdir = '/media/data/checkpoints/flatcam/testing/',
+                   logdir = '/checkpoints/testing/',
                    num_steps = num_steps)
