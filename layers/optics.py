@@ -463,13 +463,15 @@ def square_aperture(input_field, aperture_fraction):
 
 def circular_aperture(input_field, max_val=None):
     input_shape = input_field.shape.as_list()
-    [x, y] = np.mgrid[-input_shape[1] // 2: input_shape[1] // 2,
-                      -input_shape[2] // 2: input_shape[2] // 2].astype(np.float64)
+    [b, x, y, c] = np.mgrid[0:input_shape[0],
+                      -input_shape[1] // 2: input_shape[1] // 2,
+                      -input_shape[2] // 2: input_shape[2] // 2, 
+                      0:input_shape[3]].astype(np.float64)
 
     if max_val is None:
         max_val = np.amax(x)
 
-    r = np.sqrt(x ** 2 + y ** 2)[None,:,:,None]
+    r = np.sqrt(x ** 2 + y ** 2) # [None,:,:,None]
     return tf.where(r<max_val,
                     input_field,
                     tf.zeros(shape=input_shape,dtype=input_field.dtype))
