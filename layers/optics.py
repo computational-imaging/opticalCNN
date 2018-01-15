@@ -107,7 +107,7 @@ def attach_summaries(name, var, image=False, log_image=False):
     tf.summary.scalar(name+'_mean', tf.reduce_mean(var))
     tf.summary.scalar(name+'_max', tf.reduce_max(var))
     tf.summary.scalar(name+'_min', tf.reduce_min(var))
-    tf.summary.histogram(name+'_histogram', var)
+    # tf.summary.histogram(name+'_histogram', var)
 
     # Attaching a tensor summary will allow us to retrieve the actual value of the
     # height map just from the summary
@@ -587,6 +587,56 @@ def height_map_element(map_shape,
                               height_map=height_map,
                               refractive_index=refractive_index,
                               height_tolerance=height_tolerance)
+
+        return element
+    
+#------ AmplitudeMask object ------#
+class AmplitudeMask():
+    def __init__(self, amplitude_map):
+
+        self.amplitude_map = amplitude_map
+     
+        self._build()
+
+    def _build(self):
+        self.amplitude_map = tf.cast(self.amplitude_map, tf.complex128)
+    
+    def __call__(self, input_field):
+        input_field = tf.cast(input_field, tf.complex128)
+        return tf.multiply(input_field, self.amplitude_map, name='apply_amplitude_mask')
+    
+def amplitude_map_element(map_shape, r_NA,
+                       name,
+                       block_size=1,
+                       amplitude_map_initializer=None,
+                       amplitude_map_regularizer=None):
+
+        b, h, w, c = map_shape
+        input_shape = [b, h//block_size, w//block_size, c]
+
+        if amplitude_map_initializer is None:
+            init_amplitude_map_value = np.ones(shape=input_shape, dtype=np.float64)
+            amplitude_map_initializer = tf.constant_initializer(init_amplitude_map_value)
+
+        with tf.variable_scope(name, reuse=False):
+            amplitude_map_var = tf.get_variable(name="amplitude_map_sqrt",
+                                             shape=input_shape,
+                                             dtype=tf.float64,
+                                             trainable=True,
+                                             initializer=amplitude_map_initializer)
+
+            amplitude_map_full = tf.image.resize_images(amplitude_map_var, map_shape[1:3],
+                                                     method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+            amplitude_map_full = circular_aperture(amplitude_map_full, max_val = r_NA)
+            amplitude_map = tf.square(amplitude_map_full, name='amplitude_map')
+            
+
+            if amplitude_map_regularizer is not None:
+                tf.contrib.layers.apply_regularization(amplitude_map_regularizer, weights_list=[amplitude_map])
+
+            attach_summaries("amplitude_map", amplitude_map, image=True)
+
+        element =  AmplitudeMask(amplitude_map=amplitude_map)
 
         return element
 
