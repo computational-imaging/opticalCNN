@@ -1,8 +1,9 @@
 import model
 import layers.optics as optics
+from layers.utils import *
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 import numpy as np
 import tensorflow as tf
@@ -21,12 +22,12 @@ class PhaseMaskModel(model.Model):
 
         self.dim = dim
         self.wave_resolution = dims
-        self.wave_length = wavelength
+        self.wavelength = wavelength
         self.pixel_size = pixel_size
         self.n = n
         self.r_NA = 35
 
-        super(PhaseMaskModel, self).__init__(name='PhaseMask_Test', ckpt_path=ckpt_path)
+        super(PhaseMaskModel, self).__init__(name='PhaseMask_ONN', ckpt_path=ckpt_path)
 
     def _build_graph(self, x_train, hm_reg_scale, hm_init_type='random_normal'):
         with tf.device('/device:GPU:0'):
@@ -35,49 +36,14 @@ class PhaseMaskModel(model.Model):
             input_img = x_train/tf.reduce_sum(x_train)
             tf.summary.image('input_image', x_train)
             
-            # fftshift(fft2(ifftshift( FIELD ))), zero-centered
-            field = optics.fftshift2d_tf(optics.transp_fft2d(optics.ifftshift2d_tf(input_img)))
-
-            # Build a phase mask, zero-centered
-            height_map_initializer=tf.random_uniform_initializer(minval=0.999e-4, maxval=1.001e-4)
-            # height_map_initializer=None
-            pm = optics.height_map_element([1,self.wave_resolution[0],self.wave_resolution[1],1],
-                                             wave_lengths=self.wave_length,
-                                             height_map_regularizer=optics.laplace_l1_regularizer(hm_reg_scale),
-                                             height_map_initializer=height_map_initializer,
-                                             name='phase_mask_height',
-                                             refractive_index=self.n)
+            doAmplitudeMask=False
+            output_img = optical_conv_layer(input_img, hm_reg_scale, self.r_NA, n=self.n, wavelength=self.wavelength,
+                       coherent=False, amplitude_mask=doAmplitudeMask, name='maskopt')
             
-            # Get ATF and PSF
-            otf = tf.ones([1,self.wave_resolution[0],self.wave_resolution[1],1])
-            otf = optics.circular_aperture(otf, max_val = self.r_NA)
-            otf = pm(otf)
-            psf = optics.fftshift2d_tf(optics.transp_ifft2d(optics.ifftshift2d_tf(otf)))
-            psf = optics.Sensor(input_is_intensities=False, resolution=sensordims)(psf)
-            psf /= tf.reduce_sum(psf) # sum or max?
-            psf = tf.cast(psf, tf.float32)
-            optics.attach_img('recon_psf', psf)
-            
-            # Get the output image
-            coherent = False
-            if coherent:
-                field = optics.circular_aperture(field, max_val = self.r_NA)
-                field = pm(field)
-                tf.summary.image('field', tf.square(tf.abs(field)))
-                field = optics.fftshift2d_tf(optics.transp_ifft2d(optics.ifftshift2d_tf(field)))
-            
-                output_img = optics.Sensor(input_is_intensities=False, resolution=(sensordims))(field)
-            else:
-                psf = tf.expand_dims(tf.expand_dims(tf.squeeze(psf), -1), -1)
-                output_img = tf.abs(optics.fft_conv2d(input_img, psf))
-                output_img = optics.Sensor(input_is_intensities=True, resolution=(sensordims))(output_img)
-            
-            output_img /= tf.reduce_sum(output_img) # sum or max?
-            output_img = tf.cast(output_img, tf.float32)
-            # output_img = tf.transpose(output_img, [1,2,0,3]) # (height, width, 1, 1)
+            # output_img = optics.Sensor(input_is_intensities=False, resolution=sensordims)(output_img)
             
             # Attach images to summary
-            tf.summary.image('output_image', output_img)
+            # tf.summary.image('output_image', output_img)
             return output_img
 
     def _get_data_loss(self, model_output, ground_truth):
@@ -128,7 +94,9 @@ class PhaseMaskModel(model.Model):
         psf = tf.expand_dims(tf.expand_dims(tf.squeeze(psf), -1), -1)
         # psf = tf.transpose(psf, [1,2,0,3])
         
-        convolved_image = tf.abs(optics.fft_conv2d(convolved_image, psf))
+        pad = int(dim/2)
+        convolved_image = tf.abs(optics.fft_conv2d(fftpad(convolved_image, pad), fftpad_psf(psf, pad)))
+        convolved_image = fftunpad(convolved_image, pad)
         convolved_image = tf.squeeze(convolved_image,axis=0)
         convolved_image /= tf.reduce_sum(convolved_image)
 
@@ -149,12 +117,17 @@ if __name__=='__main__':
     wavelength = 532e-9
     pixel_size = 10.8*1e-6
     n=1.48
-    num_steps = 20000
+    num_steps = 30000
 
     phasemask = PhaseMaskModel(dim, dims, wavelength, pixel_size, n, ckpt_path=None)
 
     # now = datetime.now()
     run_id = 'opticalcorrelator/'
+    log_dir = os.path.join('/media/data/checkpoints/onn/maskopt/', run_id)
+    if tf.gfile.Exists(log_dir):
+        tf.gfile.DeleteRecursively(log_dir)
+    tf.gfile.MakeDirs(log_dir)
+    
     phasemask.fit(model_params = {'hm_reg_scale':1e-1},
                    opt_type = 'sgd_with_momentum',
                    #opt_params = {'beta1':0.8, 'beta2':0.999, 'epsilon':1.},
@@ -165,5 +138,5 @@ if __name__=='__main__':
                    starter_learning_rate = 5e-3,
                    num_steps_until_save=500,
                    num_steps_until_summary=50,
-                   logdir = os.path.join('/media/data/checkpoints/onn/maskopt/', run_id),
+                   logdir = log_dir,
                    num_steps = num_steps)

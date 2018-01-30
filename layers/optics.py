@@ -589,6 +589,136 @@ def height_map_element(map_shape,
                               height_tolerance=height_tolerance)
 
         return element
+
+
+#------ Zernike basis phase mask object ------#
+class ZernikePhaseMask():
+    def __init__(self,
+                 zernike_volume,
+                 wave_resolution,
+                 wave_lengths,
+                 sensor_distance,
+                 sensor_resolution,
+                 input_sample_interval,
+                 refractive_idcs,
+                 height_tolerance,
+                 noise_model=gaussian_noise,
+                 psf_resolution=None,
+                 target_distance=None,
+                 use_planar_incidence=True,
+                 upsample=True,
+                 depth_bins=None,
+                 zernike_scale=1e8):
+
+        self.sensor_distance = sensor_distance
+        self.zernike_volume=zernike_volume
+        self.wave_resolution = wave_resolution
+        self.wave_lengths = wave_lengths
+        self.use_planar_incidence=use_planar_incidence
+        self.depth_bins = depth_bins
+        self.sensor_resolution = sensor_resolution
+        self.noise_model = noise_model
+        self.upsample=upsample
+        self.target_distance=target_distance
+        self.zernike_volume = zernike_volume
+        self.height_tolerance = height_tolerance
+        self.input_sample_interval = input_sample_interval
+        self.zernike_scale = zernike_scale
+        self.refractive_idcs = refractive_idcs
+
+        if psf_resolution is None:
+            psf_resolution = wave_resolution
+        self.psf_resolution = psf_resolution
+
+        self.physical_size = float(self.wave_resolution[0] * self.input_sample_interval)
+        self.pixel_size = self.input_sample_interval * np.array(wave_resolution)/np.array(sensor_resolution)
+
+        print("Physical size is %0.2e.\nWave resolution is %d."%(self.physical_size, self.wave_resolution[0]))
+
+        self.get_psfs()
+
+
+    def _build_height_map(self):
+        height_map_shape = [1, self.wave_resolution[0], self.wave_resolution[1], 1]
+
+        num_zernike_coeffs = self.zernike_volume.shape.as_list()[0]
+
+        zernike_inits = np.zeros((num_zernike_coeffs,1,1))
+        zernike_inits[3] = -51.
+        zernike_initializer = tf.constant_initializer(zernike_inits)
+
+        self.zernike_coeffs = tf.get_variable('zernike_coeffs',
+                                       shape=[num_zernike_coeffs, 1, 1],
+                                       dtype=tf.float32,
+                                       trainable=True,
+                                       initializer=zernike_initializer)
+        #mask = np.ones([num_zernike_coeffs, 1, 1])
+        #mask[0] = 0.
+        #self.zernike_coeffs *= mask
+
+        for i in range(num_zernike_coeffs):
+            tf.summary.scalar('zernike_coeff_%d'%i, tf.squeeze(self.zernike_coeffs[i,:,:]))
+
+        self.height_map = tf.reduce_sum(self.zernike_coeffs*self.zernike_volume, axis=0)
+        self.height_map = tf.expand_dims(tf.expand_dims(self.height_map, 0), -1, name='height_map')
+
+        attach_summaries("Height_map", self.height_map, image=True, log_image=False)
+
+        self.element =  PhasePlate(wave_lengths=self.wave_lengths,
+                                   height_map=self.height_map,
+                                   refractive_idcs=self.refractive_idcs,
+                                   height_tolerance=self.height_tolerance)
+
+    
+
+def zernike_element(input_field,
+                    zernike_volume,
+                    name,
+                    wave_lengths,
+                    refractive_idcs,
+                    zernike_initializer=None,
+                    height_map_regularizer=None,
+                    height_tolerance=None, # Default height tolerance is 2 nm.
+                    zernike_scale=1e5,
+                   ):
+
+    _, height, width, _ = input_field.shape.as_list()
+    height_map_shape = [1, height, width, 1]
+
+    num_zernike_coeffs = zernike_volume.shape.as_list()[0]
+
+    if zernike_initializer is None:
+        zernike_initializer = tf.zeros_initializer()#tf.random_normal_initializer(stddev=1e-6)
+
+    with tf.variable_scope(name, reuse=False):
+        zernike_coeffs = tf.get_variable('zernike_coeffs',
+                                       shape=[num_zernike_coeffs, 1, 1],
+                                       dtype=tf.float32,
+                                       trainable=True,
+                                       initializer=zernike_initializer)
+        #mask = np.ones([num_zernike_coeffs, 1, 1])
+        #mask[0] = 0.
+        #zernike_coeffs *= mask/zernike_scale
+
+        for i in range(num_zernike_coeffs):
+            tf.summary.scalar('zernike_coeff_%d'%i, tf.squeeze(zernike_coeffs[i,:,:]))
+
+        height_map = tf.reduce_sum(zernike_coeffs*zernike_volume, axis=0)
+        height_map = tf.expand_dims(tf.expand_dims(height_map, 0), -1, name='height_map')
+
+        if height_map_regularizer is not None:
+            tf.contrib.layers.apply_regularization(height_map_regularizer, weights_list=[height_map])
+
+        height_map_summary = (height_map - tf.reduce_min(height_map))/(tf.reduce_max(height_map) - tf.reduce_min(height_map))
+        attach_summaries("Height_map", height_map_summary, image=True, log_image=True)
+
+    element =  ZernikePhaseMask(wave_lengths=wave_lengths,
+                          height_map=height_map,
+                          refractive_idcs=refractive_idcs,
+                          height_tolerance=height_tolerance)
+
+    return element
+    
     
 #------ AmplitudeMask object ------#
 class AmplitudeMask():

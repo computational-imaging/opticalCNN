@@ -202,7 +202,7 @@ class Model(abc.ABC):
 
         # Create a saver
         self.saver = tf.train.Saver(keep_checkpoint_every_n_hours=2,
-                                    max_to_keep=5)
+                                    max_to_keep=3)
 
         # Get all summaries
         summaries_merged = tf.summary.merge_all()
@@ -227,7 +227,8 @@ class Model(abc.ABC):
                                                                     total_loss_graph,
                                                                     reg_loss_graph,
                                                                     data_loss_graph])
-                print("Step %d\n    total_loss %0.8f   reg_loss %0.8f   data_loss %0.8f\n"%\
+                if not step % 20:
+                    print("Step %d\n    total_loss %0.8f   reg_loss %0.8f   data_loss %0.8f\n"%\
                         (step, total_loss, reg_loss, data_loss))
 
                 if coord.should_stop():
