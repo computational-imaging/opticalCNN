@@ -1,0 +1,95 @@
+\begin{thebibliography}{10}
+
+\bibitem{lecun2015deep}
+LeCun, Y., Bengio, Y., Hinton, G.:
+\newblock Deep learning.
+\newblock Nature \textbf{521}(7553) (2015)  436--444
+
+\bibitem{han2015deep}
+Han, S., Mao, H., Dally, W.J.:
+\newblock Deep compression: Compressing deep neural networks with pruning,
+  trained quantization and huffman coding.
+\newblock arXiv preprint arXiv:1510.00149 (2015)
+
+\bibitem{iandola2016squeezenet}
+Iandola, F.N., Han, S., Moskewicz, M.W., Ashraf, K., Dally, W.J., Keutzer, K.:
+\newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and< 0.5
+  mb model size.
+\newblock arXiv preprint arXiv:1602.07360 (2016)
+
+\bibitem{shen2017deep}
+Shen, Y., Harris, N.C., Skirlo, S., Englund, D., Solja{\v{c}}i{\'c}, M.:
+\newblock Deep learning with coherent nanophotonic circuits.
+\newblock In: Photonics Society Summer Topical Meeting Series (SUM), 2017 IEEE,
+  IEEE (2017)  189--190
+
+\bibitem{saxena1995adaptive}
+Saxena, I., Fiesler, E.:
+\newblock Adaptive multilayer optical neural network with optical thresholding.
+\newblock Optical Engineering \textbf{34}(8) (1995)  2435--2440
+
+\bibitem{sun2013large}
+Sun, J., Timurdogan, E., Yaacobi, A., Hosseini, E.S., Watts, M.R.:
+\newblock Large-scale nanophotonic phased array.
+\newblock Nature \textbf{493}(7431) (2013)  195--199
+
+\bibitem{rechtsman2013photonic}
+Rechtsman, M.C., Zeuner, J.M., Plotnik, Y., Lumer, Y., Segev, M., Szameit, A.:
+\newblock Photonic floquet topological insulators.
+\newblock In: Lasers and Electro-Optics (CLEO), 2013 Conference on, IEEE (2013)
+   1--2
+
+\bibitem{lin2013network}
+Lin, M., Chen, Q., Yan, S.:
+\newblock Network in network.
+\newblock arXiv preprint arXiv:1312.4400 (2013)
+
+\bibitem{rippel2015spectral}
+Rippel, O., Snoek, J., Adams, R.P.:
+\newblock Spectral representations for convolutional neural networks.
+\newblock In: Advances in Neural Information Processing Systems. (2015)
+  2449--2457
+
+\bibitem{trabelsi2017deep}
+Trabelsi, C., Bilaniuk, O., Serdyuk, D., Subramanian, S., Santos, J.F., Mehri,
+  S., Rostamzadeh, N., Bengio, Y., Pal, C.J.:
+\newblock Deep complex networks.
+\newblock arXiv preprint arXiv:1705.09792 (2017)
+
+\bibitem{wu2014optical}
+Wu, K., De~Abajo, J.G., Soci, C., Shum, P.P., Zheludev, N.I.:
+\newblock An optical fiber network oracle for np-complete problems.
+\newblock Light: Science \& Applications \textbf{3}(2) (2014)  e147
+
+\bibitem{psaltis1988adaptive}
+Psaltis, D., Brady, D., Wagner, K.:
+\newblock Adaptive optical networks using photorefractive crystals.
+\newblock Applied Optics \textbf{27}(9) (1988)  1752--1759
+
+\bibitem{lu1989two}
+Lu, T., Wu, S., Xu, X., Francis, T.:
+\newblock Two-dimensional programmable optical neural network.
+\newblock Applied optics \textbf{28}(22) (1989)  4908--4913
+
+\bibitem{manzur2012optical}
+Manzur, T., Zeller, J., Serati, S.:
+\newblock Optical correlator based target detection, recognition,
+  classification, and tracking.
+\newblock Applied optics \textbf{51}(21) (2012)  4976--4983
+
+\bibitem{gruev2002implementation}
+Gruev, V., Etienne-Cummings, R.:
+\newblock Implementation of steerable spatiotemporal image filters on the focal
+  plane.
+\newblock IEEE Transactions on Circuits and Systems II: Analog and Digital
+  Signal Processing \textbf{49}(4) (2002)  233--244
+
+\bibitem{chen2016asp}
+Chen, H.G., Jayasuriya, S., Yang, J., Stephen, J., Sivaramakrishnan, S.,
+  Veeraraghavan, A., Molnar, A.:
+\newblock Asp vision: Optically computing the first layer of convolutional
+  neural networks using angle sensitive pixels.
+\newblock In: Proceedings of the IEEE Conference on Computer Vision and Pattern
+  Recognition. (2016)  903--912
+
+\end{thebibliography}
