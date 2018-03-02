@@ -1,51 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: onn-main.aux
-White space in argument---line 24 of file onn-main.aux
- : \citation{manzur2012optical,
- :                              javidi1995optical}
-I'm skipping whatever remains of this command
 The style file: splncs.bst
 Database file #1: ../bibliography.bib
-You've used 16 entries,
+You've used 13 entries,
             2087 wiz_defined-function locations,
-            590 strings with 6924 characters,
-and the built_in function-call counts, 5498 in all, are:
-= -- 538
-> -- 239
-< -- 12
-+ -- 85
-- -- 69
-* -- 404
-:= -- 738
-add.period$ -- 18
-call.type$ -- 16
-change.case$ -- 16
+            568 strings with 6329 characters,
+and the built_in function-call counts, 4265 in all, are:
+= -- 403
+> -- 202
+< -- 8
++ -- 72
+- -- 59
+* -- 308
+:= -- 585
+add.period$ -- 15
+call.type$ -- 13
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 286
-empty$ -- 478
-format.name$ -- 69
-if$ -- 1314
+cite$ -- 13
+duplicate$ -- 222
+empty$ -- 374
+format.name$ -- 59
+if$ -- 1013
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 16
-newline$ -- 83
-num.names$ -- 16
-pop$ -- 49
+int.to.str$ -- 13
+missing$ -- 14
+newline$ -- 68
+num.names$ -- 13
+pop$ -- 47
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 205
+skip$ -- 154
 stack$ -- 0
-substring$ -- 384
-swap$ -- 166
-text.length$ -- 12
+substring$ -- 272
+swap$ -- 121
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 50
-width$ -- 18
-write$ -- 184
-(There was 1 error message)
+while$ -- 35
+width$ -- 15
+write$ -- 146

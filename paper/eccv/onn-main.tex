@@ -2,7 +2,7 @@
 % Based on CVPR 07 and LNCS, with modifications by DAF, AZ and elle, 2008 and AA, 2010, and CC, 2011; TT, 2014; AAS, 2016
 
 \documentclass[runningheads]{llncs}
-\usepackage{graphicx}
+\usepackage{graphicx, hyperref}
 \usepackage{amsmath,amssymb} % define this before the line numbering.
 \usepackage{ruler}
 \usepackage{color}
@@ -20,7 +20,7 @@
 \mainmatter
 \def\ECCV18SubNumber{***}  % Insert your submission number here
 
-\title{ClassificationCam: An exploration of hybrid and fully optical convolutional neural networks} % Replace with your title
+\title{ClassificationCam: How can optics be used in convolutional neural networks? (not final)} % Replace with your title
 
 \titlerunning{ECCV-18 submission ID \ECCV18SubNumber}
 
@@ -50,12 +50,8 @@ CNNs are very important, but they require a lot of computation. Optics can offer
 
 \section{Related Work, pp. 2-4}
 \label{sec:related}
-% \input{sections/related}
-\begin{itemize}
-\item CNNs for computer vision
-\item Computational imaging and embedded vision
-\item Optical computing, optical neural networks	
-\end{itemize}
+\input{sections/related}
+
 
 \section{ONN Toolbox, pp. 5-7}
 \label{sec:toolbox}
@@ -102,14 +98,14 @@ Implement the hybrid optoelectronic two-layer neural network. Goal is to show th
 \begin{itemize}
 \item Not straightforward to generalize first optical conv. layer to multiple optical layers
 \item Discuss importance of negative weights – \red{Vincent?}
+\item Instead of trying to replicate a CNN exactly, could take advantage of optical transformations that aren't as practical in computations. For example, we use a 4f system for convolution, but this requires two extra lenses. Perhaps a single custom learned optical element can be used instead.
 \item In the future, exploit other properties of light (polarization, phase)	
-\item Specifically, coherent light and holography
+\item Specifically, coherent light and holography, photonics
 \end{itemize}
 
 \section{Conclusion, p. 14}
 \label{sec:conclusion}
-% \input{sections/conclusion}
-Important step towards optical CNNs.
+\input{sections/conclusion}
 
 \clearpage
 
