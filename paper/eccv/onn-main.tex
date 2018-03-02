@@ -42,13 +42,11 @@ the abstract section}
 \end{abstract}
 
 
-\section{Introduction, pp. 1-2}
+\section{Introduction}
 \label{sec:intro}
-% \input{sections/introduction}
+\input{sections/introduction}
 
-CNNs are very important, but they require a lot of computation. Optics can offer passive, fast, highly parallel computation. This project explores incorporating optical computing in convolutional neural networks. We present several models and assess their limitations and potential.
-
-\section{Related Work, pp. 2-4}
+\section{Related Work}
 \label{sec:related}
 \input{sections/related}
 
@@ -64,6 +62,8 @@ Optical nonlinearities \\
 	Max/avg pooling with spectral pooling \\ 
 	Fully connected layers	
 \end{itemize}
+
+% \paragraph{CNN architecture variations} Our goal is to match performance with a constrained optical setup, so also relevant to highlight are CNNs with non-standard architectures that may align with physical designs. Omission of fully connected layers, i.e. fully convolutional with global average pooling at the top layer has proven to be successful in \cite{lin2013network,iandola2016squeezenet}. Analysis of CNN operations in the Fourier domain, introducing spectral pooling and regularization \cite{rippel2015spectral}. Relevant because we can also access optical Fourier plane. We also note the work in the complex-valued deep neural networks \cite{trabelsi2017deep}, as coherent optical signals may be an effective means of propagating complex-valued data.
 
 \section{Training, pp. 7}
 Here we talk about how we train the ONN offline in Tensorflow. PSF optimization followed by phase mask optimization OR end-to-end phase mask optimization.

@@ -3,44 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: onn-main.aux
 The style file: splncs.bst
 Database file #1: ../bibliography.bib
-You've used 13 entries,
+Warning--can't use both volume and number fields in likamwa2016redeye
+You've used 21 entries,
             2087 wiz_defined-function locations,
-            568 strings with 6329 characters,
-and the built_in function-call counts, 4265 in all, are:
-= -- 403
-> -- 202
-< -- 8
-+ -- 72
-- -- 59
-* -- 308
-:= -- 585
-add.period$ -- 15
-call.type$ -- 13
-change.case$ -- 12
+            625 strings with 7874 characters,
+and the built_in function-call counts, 7357 in all, are:
+= -- 739
+> -- 296
+< -- 18
++ -- 106
+- -- 85
+* -- 547
+:= -- 972
+add.period$ -- 24
+call.type$ -- 21
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 222
-empty$ -- 374
-format.name$ -- 59
-if$ -- 1013
+cite$ -- 22
+duplicate$ -- 381
+empty$ -- 642
+format.name$ -- 85
+if$ -- 1768
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 14
-newline$ -- 68
-num.names$ -- 13
-pop$ -- 47
+int.to.str$ -- 21
+missing$ -- 22
+newline$ -- 108
+num.names$ -- 21
+pop$ -- 60
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 154
+skip$ -- 275
 stack$ -- 0
-substring$ -- 272
-swap$ -- 121
-text.length$ -- 8
+substring$ -- 537
+swap$ -- 228
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 35
-width$ -- 15
-write$ -- 146
+warning$ -- 1
+while$ -- 70
+width$ -- 23
+write$ -- 246
+(There was 1 warning)
