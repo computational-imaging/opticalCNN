@@ -5,23 +5,59 @@ LeCun, Y., Bengio, Y., Hinton, G.:
 \newblock Deep learning.
 \newblock Nature \textbf{521}(7553) (2015)  436--444
 
-\bibitem{han2015deep}
-Han, S., Mao, H., Dally, W.J.:
-\newblock Deep compression: Compressing deep neural networks with pruning,
-  trained quantization and huffman coding.
-\newblock arXiv preprint arXiv:1510.00149 (2015)
+\bibitem{krizhevsky2012imagenet}
+Krizhevsky, A., Sutskever, I., Hinton, G.E.:
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In: Advances in neural information processing systems. (2012)
+  1097--1105
 
-\bibitem{iandola2016squeezenet}
-Iandola, F.N., Han, S., Moskewicz, M.W., Ashraf, K., Dally, W.J., Keutzer, K.:
-\newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and< 0.5
-  mb model size.
-\newblock arXiv preprint arXiv:1602.07360 (2016)
+\bibitem{goodfellow2014generative}
+Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair,
+  S., Courville, A., Bengio, Y.:
+\newblock Generative adversarial nets.
+\newblock In: Advances in neural information processing systems. (2014)
+  2672--2680
 
-\bibitem{shen2017deep}
-Shen, Y., Harris, N.C., Skirlo, S., Englund, D., Solja{\v{c}}i{\'c}, M.:
-\newblock Deep learning with coherent nanophotonic circuits.
-\newblock In: Photonics Society Summer Topical Meeting Series (SUM), 2017 IEEE,
-  IEEE (2017)  189--190
+\bibitem{long2015fully}
+Long, J., Shelhamer, E., Darrell, T.:
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock In: Proceedings of the IEEE conference on computer vision and pattern
+  recognition. (2015)  3431--3440
+
+\bibitem{silver2016mastering}
+Silver, D., Huang, A., Maddison, C.J., Guez, A., Sifre, L., Van Den~Driessche,
+  G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.,
+  et~al.:
+\newblock Mastering the game of go with deep neural networks and tree search.
+\newblock nature \textbf{529}(7587) (2016)  484--489
+
+\bibitem{likamwa2013energy}
+LiKamWa, R., Priyantha, B., Philipose, M., Zhong, L., Bahl, P.:
+\newblock Energy characterization and optimization of image sensing toward
+  continuous mobile vision.
+\newblock In: Proceeding of the 11th annual international conference on Mobile
+  systems, applications, and services, ACM (2013)  69--82
+
+\bibitem{yang2013chip}
+Yang, L., Zhang, L., Ji, R.:
+\newblock On-chip optical matrix-vector multiplier for parallel computation.
+\newblock In: SPIE. Volume~10. (2013)  004932
+
+\bibitem{goodman2008introduction}
+Goodman, J.:
+\newblock Introduction to fourier optics.
+\newblock (2008)
+
+\bibitem{gibbs2012optical}
+Gibbs, H.:
+\newblock Optical bistability: controlling light with light.
+\newblock Elsevier (2012)
+
+\bibitem{christodoulides2010nonlinear}
+Christodoulides, D.N., Khoo, I.C., Salamo, G.J., Stegeman, G.I., Van~Stryland,
+  E.W.:
+\newblock Nonlinear refraction and absorption: mechanisms and magnitudes.
+\newblock Advances in Optics and Photonics \textbf{2}(1) (2010)  60--200
 
 \bibitem{sun2013large}
 Sun, J., Timurdogan, E., Yaacobi, A., Hosseini, E.S., Watts, M.R.:
@@ -33,6 +69,24 @@ Rechtsman, M.C., Zeuner, J.M., Plotnik, Y., Lumer, Y., Segev, M., Szameit, A.:
 \newblock Photonic floquet topological insulators.
 \newblock In: Lasers and Electro-Optics (CLEO), 2013 Conference on, IEEE (2013)
    1--2
+
+\bibitem{shen2017deep}
+Shen, Y., Harris, N.C., Skirlo, S., Englund, D., Solja{\v{c}}i{\'c}, M.:
+\newblock Deep learning with coherent nanophotonic circuits.
+\newblock In: Photonics Society Summer Topical Meeting Series (SUM), 2017 IEEE,
+  IEEE (2017)  189--190
+
+\bibitem{han2015deep}
+Han, S., Mao, H., Dally, W.J.:
+\newblock Deep compression: Compressing deep neural networks with pruning,
+  trained quantization and huffman coding.
+\newblock arXiv preprint arXiv:1510.00149 (2015)
+
+\bibitem{iandola2016squeezenet}
+Iandola, F.N., Han, S., Moskewicz, M.W., Ashraf, K., Dally, W.J., Keutzer, K.:
+\newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and< 0.5
+  mb model size.
+\newblock arXiv preprint arXiv:1602.07360 (2016)
 
 \bibitem{gruev2002implementation}
 Gruev, V., Etienne-Cummings, R.:
@@ -57,6 +111,11 @@ Ng, R., Levoy, M., Br{\'e}dif, M., Duval, G., Horowitz, M., Hanrahan, P.:
 Levin, A., Fergus, R., Durand, F., Freeman, W.T.:
 \newblock Image and depth from a conventional camera with a coded aperture.
 \newblock ACM transactions on graphics (TOG) \textbf{26}(3) (2007) ~70
+
+\bibitem{mcguire2007optical}
+McGuire, M., Matusik, W., Pfister, H., Chen, B., Hughes, J.F., Nayar, S.K.:
+\newblock Optical splitting trees for high-precision monocular imaging.
+\newblock IEEE Computer Graphics and Applications \textbf{27}(2) (2007)
 
 \bibitem{o2010optical}
 O'Toole, M., Kutulakos, K.N.:
