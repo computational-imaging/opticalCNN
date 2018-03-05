@@ -181,4 +181,16 @@ Chen, H.G., Jayasuriya, S., Yang, J., Stephen, J., Sivaramakrishnan, S.,
 \newblock In: Proceedings of the IEEE Conference on Computer Vision and Pattern
   Recognition. (2016)  903--912
 
+\bibitem{he2015delving}
+He, K., Zhang, X., Ren, S., Sun, J.:
+\newblock Delving deep into rectifiers: Surpassing human-level performance on
+  imagenet classification.
+\newblock In: Proceedings of the IEEE international conference on computer
+  vision. (2015)  1026--1034
+
+\bibitem{ramachandran2017searching}
+Ramachandran, P., Zoph, B., Le, Q.:
+\newblock Searching for activation functions.
+\newblock (2017)
+
 \end{thebibliography}

@@ -46,47 +46,24 @@ the abstract section}
 \label{sec:intro}
 \input{sections/introduction}
 
-\section{Related Work}
+\section{Related work}
 \label{sec:related}
 \input{sections/related}
 
 
-\section{ONN Toolbox, pp. 5-7}
+\section{ONN toolbox}
 \label{sec:toolbox}
-In this section we present building blocks for an optically implemented CNN. In this rest of this paper we focus on the convolutional layer, but we will briefly discuss other layers here too.
-\begin{itemize}
-\item Convolutional layer:
-	Small kernel, tiled kernels, single large kernel (\red{Fig. 1})
-\item Other layers that we didn’t test in detail: \\
-Optical nonlinearities \\ 
-	Max/avg pooling with spectral pooling \\ 
-	Fully connected layers	
-\end{itemize}
+\input{sections/toolbox}
 
-% \paragraph{CNN architecture variations} Our goal is to match performance with a constrained optical setup, so also relevant to highlight are CNNs with non-standard architectures that may align with physical designs. Omission of fully connected layers, i.e. fully convolutional with global average pooling at the top layer has proven to be successful in \cite{lin2013network,iandola2016squeezenet}. Analysis of CNN operations in the Fourier domain, introducing spectral pooling and regularization \cite{rippel2015spectral}. Relevant because we can also access optical Fourier plane. We also note the work in the complex-valued deep neural networks \cite{trabelsi2017deep}, as coherent optical signals may be an effective means of propagating complex-valued data.
-
-\section{Training, pp. 7}
-Here we talk about how we train the ONN offline in Tensorflow. PSF optimization followed by phase mask optimization OR end-to-end phase mask optimization.
+\section{Learning an optical CNN, p. 7}
+\label{sec:simulation}
+\input{sections/optimization}
 
 \section{Simulations, pp. 8-10}
-\label{sec:simulation}
-We use simulations to better understand the performance of optical CNNs. \\
-\red{Fig. 2}: diagram of possible ONN models.
-\red{Table 1:} Results.
-\begin{itemize}
-\item Introduce toy classification problem(s?), discuss constraints.
-\item Learned optical correlator (single optical conv. layer) \\ Here we are able to use end-to-end learning. \\
-\red{Possible figure with learned phase mask and PSF.}
-\item Hybrid optoelectronic (one optical conv. layer)\\ 
-	Talk about the dual channel positive and negative weights\\
-	Grayscale \\
-	With color filters – \red{Vincent?}\\
-\red{Fig. 3: Hybrid ONN phase masks and PSFs.}
-\item All-optical convolutional neural network \\
-Doesn’t fully work, but can discuss some results
-\end{itemize}
+\label{sec:simulations}
+\input{sections/simulations}
 
-\section{Optical Prototype, pp. 10-11}
+\section{Optical prototype, pp. 10-11}
 \label{sec:prototype}
 Implement the hybrid optoelectronic two-layer neural network. Goal is to show that the hybrid ONN can perform on par with the electronic ONN, with the same number of layers, and better than the electronic ONN with one fewer layer.\\
 \red{Fig. 4: optical setup} \\

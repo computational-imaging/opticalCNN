@@ -1,0 +1,17 @@
+To train our optical CNNs, we build the forward model and use backpropagation to learn the weights in Tensorflow. 
+
+\subsection{Spatial domain optimization}
+
+\subsection{Phase mask optimization}
+As mentioned earlier, the Fourier plane of a $4-f$ system can be modulated with an aperture transfer function (ATF) to control the incoherent PSF of the system:
+\begin{equation} PSF(x,y) = |\mathcal{F}\{ATF(k_x, k_y)\}(x,y)|^2, \ \ \text{where} \ \  k_x = \frac{xx}{xx}, k_y = \end{equation}
+The ATF is a potentially complex function that can be decomposed as $ATF = A(k_x, k_y)\cdot \exp(i \Delta \phi (k_x, k_y))$, where local amplitude $A$ can be implemented with a (usually binary) transparency mask, and $\Delta \phi$ can be realized with a clear optical element with spatially varying thickness, which controls the optical path length and thereby phase shift of the. To prevent loss of light and reduce the fabrication complexity of the ATF-defining optical element, we restrict our optimization to phase-only control. 
+
+\begin{equation} \underset{\phi}{\text{minimize}} \|PSF_\text{opt} - |\mathcal{F}\{e^{i\Delta \phi}\}|^2\|^2_\text{Fro}
+\end{equation}
+where $\|\cdot\|_\text{Fro}$ denotes the Frobenius norm.
+
+\subsection{End-to-end optimization}
+Instead of first optimizing the PSFs and then separately optimizing a phase mask to best produce these PSFs, end-to-end optimization. Combine these two steps into a single optimization problem.
+
+Did not always work. 
