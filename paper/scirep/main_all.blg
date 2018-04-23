@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main_all.aux
+The style file: naturemag-doi.bst
+Database file #1: ../bibliography.bib
+Warning--I didn't find a database entry for "koppal2011wide"
+You've used 33 entries,
+            2382 wiz_defined-function locations,
+            1182 strings with 15235 characters,
+and the built_in function-call counts, 14388 in all, are:
+= -- 1058
+> -- 372
+< -- 1
++ -- 186
+- -- 93
+* -- 1627
+:= -- 1530
+add.period$ -- 96
+call.type$ -- 33
+change.case$ -- 48
+chr.to.int$ -- 0
+cite$ -- 33
+duplicate$ -- 1247
+empty$ -- 1377
+format.name$ -- 122
+if$ -- 3034
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 286
+newline$ -- 171
+num.names$ -- 33
+pop$ -- 326
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 354
+stack$ -- 0
+substring$ -- 660
+swap$ -- 1185
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 87
+width$ -- 35
+write$ -- 359
+(There was 1 warning)

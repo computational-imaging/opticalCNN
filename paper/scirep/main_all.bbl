@@ -1,0 +1,263 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname doiprefix\endcsname\relax\def\doiprefix{DOI }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{lecun2015deep}
+\bibinfo{author}{LeCun, Y.}, \bibinfo{author}{Bengio, Y.} \&
+  \bibinfo{author}{Hinton, G.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Deep learning}}.
+\newblock {\emph{\JournalTitle{Nature}}} \textbf{\bibinfo{volume}{521}},
+  \bibinfo{pages}{436--444} (\bibinfo{year}{2015}).
+
+\bibitem{krizhevsky2012imagenet}
+\bibinfo{author}{Krizhevsky, A.}, \bibinfo{author}{Sutskever, I.} \&
+  \bibinfo{author}{Hinton, G.~E.}
+\newblock \bibinfo{title}{Imagenet classification with deep convolutional
+  neural networks}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in neural information
+  processing systems}}, \bibinfo{pages}{1097--1105} (\bibinfo{year}{2012}).
+
+\bibitem{goodfellow2014generative}
+\bibinfo{author}{Goodfellow, I.} \emph{et~al.}
+\newblock \bibinfo{title}{Generative adversarial nets}.
+\newblock In \emph{\bibinfo{booktitle}{Advances in neural information
+  processing systems}}, \bibinfo{pages}{2672--2680} (\bibinfo{year}{2014}).
+
+\bibitem{long2015fully}
+\bibinfo{author}{Long, J.}, \bibinfo{author}{Shelhamer, E.} \&
+  \bibinfo{author}{Darrell, T.}
+\newblock \bibinfo{title}{Fully convolutional networks for semantic
+  segmentation}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the IEEE conference on
+  computer vision and pattern recognition}}, \bibinfo{pages}{3431--3440}
+  (\bibinfo{year}{2015}).
+
+\bibitem{han2015deep}
+\bibinfo{author}{Han, S.}, \bibinfo{author}{Mao, H.} \& \bibinfo{author}{Dally,
+  W.~J.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Deep compression: Compressing deep
+  neural networks with pruning, trained quantization and huffman coding}}.
+\newblock {\emph{\JournalTitle{arXiv preprint arXiv:1510.00149}}}
+  (\bibinfo{year}{2015}).
+
+\bibitem{iandola2016squeezenet}
+\bibinfo{author}{Iandola, F.~N.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Squeezenet: Alexnet-level accuracy
+  with 50x fewer parameters and< 0.5 mb model size}}.
+\newblock {\emph{\JournalTitle{arXiv preprint arXiv:1602.07360}}}
+  (\bibinfo{year}{2016}).
+
+\bibitem{gruev2002implementation}
+\bibinfo{author}{Gruev, V.} \& \bibinfo{author}{Etienne-Cummings, R.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Implementation of steerable
+  spatiotemporal image filters on the focal plane}}.
+\newblock {\emph{\JournalTitle{IEEE Transactions on Circuits and Systems II:
+  Analog and Digital Signal Processing}}} \textbf{\bibinfo{volume}{49}},
+  \bibinfo{pages}{233--244} (\bibinfo{year}{2002}).
+
+\bibitem{likamwa2016redeye}
+\bibinfo{author}{LiKamWa, R.}, \bibinfo{author}{Hou, Y.}, \bibinfo{author}{Gao,
+  Y.}, \bibinfo{author}{Polansky, M.} \& \bibinfo{author}{Zhong, L.}
+\newblock \bibinfo{title}{Redeye: Analog convnet image sensor architecture for
+  continuous mobile vision}.
+\newblock In \emph{\bibinfo{booktitle}{2016 ACM/IEEE 43rd Annual International
+  Symposium on Computer Architecture (ISCA)}}, \bibinfo{pages}{255--266}
+  (\bibinfo{year}{2016}).
+\newblock \doiprefix 10.1109/ISCA.2016.31.
+
+\bibitem{denz2013optical}
+\bibinfo{author}{Denz, C.}
+\newblock \emph{\bibinfo{title}{Optical neural networks}}
+  (\bibinfo{publisher}{Springer Science \& Business Media},
+  \bibinfo{year}{2013}).
+
+\bibitem{yang2013chip}
+\bibinfo{author}{Yang, L.}, \bibinfo{author}{Zhang, L.} \& \bibinfo{author}{Ji,
+  R.}
+\newblock \bibinfo{title}{On-chip optical matrix-vector multiplier for parallel
+  computation}.
+\newblock In \emph{\bibinfo{booktitle}{SPIE}}, vol.~\bibinfo{volume}{10},
+  \bibinfo{pages}{004932} (\bibinfo{year}{2013}).
+
+\bibitem{goodman2008introduction}
+\bibinfo{author}{Goodman, J.}
+\newblock \emph{\bibinfo{title}{Introduction to Fourier optics}}
+  (\bibinfo{publisher}{McGraw-hill}, \bibinfo{year}{2008}).
+
+\bibitem{farhat1985optical}
+\bibinfo{author}{Farhat, N.~H.}, \bibinfo{author}{Psaltis, D.},
+  \bibinfo{author}{Prata, A.} \& \bibinfo{author}{Paek, E.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Optical implementation of the
+  hopfield model}}.
+\newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{24}},
+  \bibinfo{pages}{1469--1475} (\bibinfo{year}{1985}).
+
+\bibitem{psaltis1988adaptive}
+\bibinfo{author}{Psaltis, D.}, \bibinfo{author}{Brady, D.} \&
+  \bibinfo{author}{Wagner, K.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Adaptive optical networks using
+  photorefractive crystals}}.
+\newblock {\emph{\JournalTitle{Applied Optics}}} \textbf{\bibinfo{volume}{27}},
+  \bibinfo{pages}{1752--1759} (\bibinfo{year}{1988}).
+
+\bibitem{lu1989two}
+\bibinfo{author}{Lu, T.}, \bibinfo{author}{Wu, S.}, \bibinfo{author}{Xu, X.} \&
+  \bibinfo{author}{Francis, T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Two-dimensional programmable
+  optical neural network}}.
+\newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{28}},
+  \bibinfo{pages}{4908--4913} (\bibinfo{year}{1989}).
+
+\bibitem{saxena1995adaptive}
+\bibinfo{author}{Saxena, I.} \& \bibinfo{author}{Fiesler, E.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Adaptive multilayer optical neural
+  network with optical thresholding}}.
+\newblock {\emph{\JournalTitle{Optical Engineering}}}
+  \textbf{\bibinfo{volume}{34}}, \bibinfo{pages}{2435--2440}
+  (\bibinfo{year}{1995}).
+
+\bibitem{shen2017deep}
+\bibinfo{author}{Shen, Y.}, \bibinfo{author}{Harris, N.~C.},
+  \bibinfo{author}{Skirlo, S.}, \bibinfo{author}{Englund, D.} \&
+  \bibinfo{author}{Solja{\v{c}}i{\'c}, M.}
+\newblock \bibinfo{title}{Deep learning with coherent nanophotonic circuits}.
+\newblock In \emph{\bibinfo{booktitle}{Photonics Society Summer Topical Meeting
+  Series (SUM), 2017 IEEE}}, \bibinfo{pages}{189--190}
+  (\bibinfo{organization}{IEEE}, \bibinfo{year}{2017}).
+
+\bibitem{bueno2017reinforcement}
+\bibinfo{author}{Bueno, J.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Reinforcement learning in a large
+  scale photonic recurrent neural network}}.
+\newblock {\emph{\JournalTitle{arXiv preprint arXiv:1711.05133}}}
+  (\bibinfo{year}{2017}).
+
+\bibitem{ng2005light}
+\bibinfo{author}{Ng, R.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Light field photography with a
+  hand-held plenoptic camera}}.
+\newblock {\emph{\JournalTitle{Computer Science Technical Report CSTR}}}
+  \textbf{\bibinfo{volume}{2}}, \bibinfo{pages}{1--11} (\bibinfo{year}{2005}).
+
+\bibitem{levin2007image}
+\bibinfo{author}{Levin, A.}, \bibinfo{author}{Fergus, R.},
+  \bibinfo{author}{Durand, F.} \& \bibinfo{author}{Freeman, W.~T.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Image and depth from a conventional
+  camera with a coded aperture}}.
+\newblock {\emph{\JournalTitle{ACM transactions on graphics (TOG)}}}
+  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{70} (\bibinfo{year}{2007}).
+
+\bibitem{mcguire2007optical}
+\bibinfo{author}{McGuire, M.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Optical splitting trees for
+  high-precision monocular imaging}}.
+\newblock {\emph{\JournalTitle{IEEE Computer Graphics and Applications}}}
+  \textbf{\bibinfo{volume}{27}} (\bibinfo{year}{2007}).
+
+\bibitem{o2010optical}
+\bibinfo{author}{O'Toole, M.} \& \bibinfo{author}{Kutulakos, K.~N.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Optical computing for fast light
+  transport analysis.}}
+\newblock {\emph{\JournalTitle{ACM Trans. Graph.}}}
+  \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{164--1}
+  (\bibinfo{year}{2010}).
+
+\bibitem{chang2016variable}
+\bibinfo{author}{Chang, J.}, \bibinfo{author}{Kauvar, I.}, \bibinfo{author}{Hu,
+  X.} \& \bibinfo{author}{Wetzstein, G.}
+\newblock \bibinfo{title}{Variable aperture light field photography: overcoming
+  the diffraction-limited spatio-angular resolution tradeoff}.
+\newblock In \emph{\bibinfo{booktitle}{Computer Vision and Pattern Recognition
+  (CVPR), 2016 IEEE Conference on}}, \bibinfo{pages}{3737--3745}
+  (\bibinfo{organization}{IEEE}, \bibinfo{year}{2016}).
+
+\bibitem{chen2016asp}
+\bibinfo{author}{Chen, H.~G.} \emph{et~al.}
+\newblock \bibinfo{title}{Asp vision: Optically computing the first layer of
+  convolutional neural networks using angle sensitive pixels}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the IEEE Conference on
+  Computer Vision and Pattern Recognition}}, \bibinfo{pages}{903--912}
+  (\bibinfo{year}{2016}).
+
+\bibitem{gregory1986real}
+\bibinfo{author}{Gregory, D.~A.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Real-time pattern recognition using
+  a modified liquid crystal television in a coherent optical correlator}}.
+\newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{25}},
+  \bibinfo{pages}{467--469} (\bibinfo{year}{1986}).
+
+\bibitem{manzur2012optical}
+\bibinfo{author}{Manzur, T.}, \bibinfo{author}{Zeller, J.} \&
+  \bibinfo{author}{Serati, S.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Optical correlator based target
+  detection, recognition, classification, and tracking}}.
+\newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{51}},
+  \bibinfo{pages}{4976--4983} (\bibinfo{year}{2012}).
+
+\bibitem{javidi1995optical}
+\bibinfo{author}{Javidi, B.}, \bibinfo{author}{Li, J.} \&
+  \bibinfo{author}{Tang, Q.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Optical implementation of neural
+  networks for face recognition by the use of nonlinear joint transform
+  correlators}}.
+\newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{34}},
+  \bibinfo{pages}{3950--3962} (\bibinfo{year}{1995}).
+
+\bibitem{sun2013large}
+\bibinfo{author}{Sun, J.}, \bibinfo{author}{Timurdogan, E.},
+  \bibinfo{author}{Yaacobi, A.}, \bibinfo{author}{Hosseini, E.~S.} \&
+  \bibinfo{author}{Watts, M.~R.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Large-scale nanophotonic phased
+  array}}.
+\newblock {\emph{\JournalTitle{Nature}}} \textbf{\bibinfo{volume}{493}},
+  \bibinfo{pages}{195--199} (\bibinfo{year}{2013}).
+
+\bibitem{rechtsman2013photonic}
+\bibinfo{author}{Rechtsman, M.~C.} \emph{et~al.}
+\newblock \bibinfo{title}{Photonic floquet topological insulators}.
+\newblock In \emph{\bibinfo{booktitle}{Lasers and Electro-Optics (CLEO), 2013
+  Conference on}}, \bibinfo{pages}{1--2} (\bibinfo{organization}{IEEE},
+  \bibinfo{year}{2013}).
+
+\bibitem{shechtman2015phase}
+\bibinfo{author}{Shechtman, Y.} \emph{et~al.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Phase retrieval with application to
+  optical imaging: a contemporary overview}}.
+\newblock {\emph{\JournalTitle{IEEE signal processing magazine}}}
+  \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{87--109}
+  (\bibinfo{year}{2015}).
+
+\bibitem{shechtman2016multicolour}
+\bibinfo{author}{Shechtman, Y.}, \bibinfo{author}{Weiss, L.~E.},
+  \bibinfo{author}{Backer, A.~S.}, \bibinfo{author}{Lee, M.~Y.} \&
+  \bibinfo{author}{Moerner, W.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Multicolour localization microscopy
+  by point-spread-function engineering}}.
+\newblock {\emph{\JournalTitle{Nature photonics}}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{590} (\bibinfo{year}{2016}).
+
+\bibitem{gibbs2012optical}
+\bibinfo{author}{Gibbs, H.}
+\newblock \emph{\bibinfo{title}{Optical bistability: controlling light with
+  light}} (\bibinfo{publisher}{Elsevier}, \bibinfo{year}{2012}).
+
+\bibitem{christodoulides2010nonlinear}
+\bibinfo{author}{Christodoulides, D.~N.}, \bibinfo{author}{Khoo, I.~C.},
+  \bibinfo{author}{Salamo, G.~J.}, \bibinfo{author}{Stegeman, G.~I.} \&
+  \bibinfo{author}{Van~Stryland, E.~W.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Nonlinear refraction and
+  absorption: mechanisms and magnitudes}}.
+\newblock {\emph{\JournalTitle{Advances in Optics and Photonics}}}
+  \textbf{\bibinfo{volume}{2}}, \bibinfo{pages}{60--200}
+  (\bibinfo{year}{2010}).
+
+\bibitem{krizhevsky2009learning}
+\bibinfo{author}{Krizhevsky, A.} \& \bibinfo{author}{Hinton, G.}
+\newblock \bibinfo{title}{Learning multiple layers of features from tiny
+  images} (\bibinfo{year}{2009}).
+
+\end{thebibliography}

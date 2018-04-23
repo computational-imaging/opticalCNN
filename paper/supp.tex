@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{graphicx,amsmath,amssymb}
+\usepackage{titling}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{textcomp, color}
+
+\graphicspath{{../figs/}}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+\newcommand{\note}{\textcolor{red}}
+
+\topmargin = -0.5in \textwidth=6.1in \textheight=8.8in
+
+\oddsidemargin = 0in \evensidemargin = 0in
+
+% \title{Supporting Information}
+% \author{Julie Chang, Gordon Wetzstein}
+
+\begin{document}
+% \maketitle
+
+% This document contains supporting information for the primary paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Convolutional layer}
+
+We propose two designs to imitate the operations of a convolutional layer. The key difference is that kernels may need to be cycled through the layers. 
+\begin{itemize}
+\item \textbf{Encoded blur:} An amplitude mask with the flipped convolution kernels is placed at the aperture plane. At some defocus distane $\Delta z$ from the conjugate image plane, ignoring diffraction effects, the image will be approximately convolved with the shape of the aperture. Cons: light loss; pros: color coding.
+
+\item \textbf{Phase mask:} A phase mask designed with point spread function (PSF) corresponding to the flipped is placed at the aperture plane. The image will be convolved with the phase mask PSF at the image plane. Cons: don't have full phase and amplitude control; pros: no light loss.
+\end{itemize}
+
+In both cases, the PSF may need to be extended to account for non-circular convolution, and we only keep the valid part of the convolution. Suppose the input image plane, $I_\text{in}$  is an $n \times m$ array of same size images ($\{I_{(1,1)}, ..., I_{(n,m)}\}$), with centers shifted by $\delta$. The PSF is composed of an $n' \times m'$ flipped convolution kernels, $\{w_{(1,1)}, ..., w_{(n',m')}\}$. For convenience, let negative indices of $k$ and $I$ circle back around (cyclic...). The image formation can be written
+
+\begin{align}
+I_\text{out}(i, j) &= (I_\text{in} * PSF)(i, j) = \int_{-\infty}^\infty \int_{-\infty}^\infty I_\text{in}(k, l) \cdot PSF(i-k, j-l) \ dl \ dk
+\end{align}
+
+If there is sufficient padding around the sub-images for non-overlapping convolutions,
+\begin{align}
+I_\text{out}(i, j) &= \sum^n_{\eta = 1} \sum^m_{\mu = 1} \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}} \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}} I_{(\eta,\mu)}(k, l) \cdot w_{(\eta, \mu)}(i-k, j-l) \ dl \ dk
+\end{align}
+
+In other words, the output image, $I_\text{out}$, is an $n' \times m'$ array of images, where
+\begin{align}
+I_{\text{out}, (\eta',\mu')} (i,j)= \sum^n_{\eta = 1} \sum^m_{\mu = 1} \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}}  \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}} I_{(\eta,\mu)}(k, l) \cdot w_{(\eta' - \eta, \mu' - \mu)}(i-k, j-l) \ dl \ dk
+\end{align} 
+
+For a single input image, i.e. for the first convolutional layer, $n = m = 1$, so this simply produces multiple copies of the input image convolved with different PSFs.
+\begin{align}
+I_{\text{out}, (\eta',\mu')} (i,j)= \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}}  \int_{-\frac{\delta}{2}}^{\frac{\delta}{2}} I_\text{in}(k, l) \cdot w_{(\eta' - \eta, \mu' - \mu)}(i-k, j-l) \ dl \ dk
+\end{align} 
+
+\begin{figure}[h]
+  \begin{center}
+  \includegraphics[width=15 cm]{conv.pdf}
+  \end{center}
+  \caption{Optical designs for convolutional layer.}
+  \label{conv}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

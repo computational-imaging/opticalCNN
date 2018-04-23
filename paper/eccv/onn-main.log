@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 MAR 2018 08:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  15 MAR 2018 14:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -398,7 +398,11 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutvoffset=\dimen148
 \Gm@dimlist=\toks24
 )
-(./onn-main.aux)
+(./onn-main.aux
+
+LaTeX Warning: Label `fig:prototype' multiply defined.
+
+)
 \openout1 = `onn-main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -415,8 +419,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
-
-(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count148
 \scratchdimen=\dimen149
@@ -507,76 +510,121 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-(./sections/introduction.tex [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdf
-tex/updmap/pdftex.map}
+(../sections/introduction.tex [1{/usr/local/texlive/2012/texmf-var/fonts/map/pd
+ftex/updmap/pdftex.map}
 
 
-]) (./sections/related.tex [2] [3])
-(./sections/toolbox.tex [4] [5]) [6] (./sections/optimization.tex)
-(./sections/simulations.tex [7]
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
+]) (../sections/related.tex [2] [3])
+(../sections/toolbox.tex
+<../figs/convolution.jpg, id=136, 1003.75pt x 486.81876pt>
+File: ../figs/convolution.jpg Graphic file (type jpg)
 
+<use ../figs/convolution.jpg>
+Package pdftex.def Info: ../figs/convolution.jpg used on input line 11.
+(pdftex.def)             Requested size: 284.52756pt x 137.99452pt.
+ [4] [5 <../figs/convolution.jpg>] [6]
+Overfull \hbox (8.63116pt too wide) in paragraph at lines 56--57
+[]\OT1/cmr/m/n/10 Bacteriorhodopsin (BR) is a mem-brane pro-tein found in the b
+ac-terium \OT1/cmr/m/it/10 Halobac-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--20
-
+[7]) (../sections/optimization.tex
+Overfull \hbox (7.76595pt too wide) in paragraph at lines 1--2
+\OT1/cmr/m/n/10 trans-port in a Ten-sor-flow frame-work and use built-in back-p
+rop-a-ga-tion and stochas-
  []
 
+[8]) (../sections/simulations.tex
+<../figs/configs.pdf, id=221, 650.43pt x 504.88625pt>
+File: ../figs/configs.pdf Graphic file (type pdf)
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
+<use ../figs/configs.pdf>
+Package pdftex.def Info: ../figs/configs.pdf used on input line 3.
+(pdftex.def)             Requested size: 341.43306pt x 265.03842pt.
 
- []
+<../figs/sim1.pdf, id=222, 468.08276pt x 312.16624pt>
+File: ../figs/sim1.pdf Graphic file (type pdf)
+ <use ../figs/sim1.pdf>
+Package pdftex.def Info: ../figs/sim1.pdf used on input line 16.
+(pdftex.def)             Requested size: 341.43306pt x 227.70798pt.
 
+[9] [10 <../figs/configs.pdf>]
+<../figs/sim2.pdf, id=276, 452.52464pt x 225.84375pt>
+File: ../figs/sim2.pdf Graphic file (type pdf)
+ <use ../figs/sim2.pdf>
+Package pdftex.def Info: ../figs/sim2.pdf used on input line 30.
+(pdftex.def)             Requested size: 341.43306pt x 170.40932pt.
+
+[11 <../figs/sim1.pdf>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-)
+ <../figs/sim3.pdf, id=349, 470.09027pt x 194.22563pt>
+File: ../figs/sim3.pdf Graphic file (type pdf)
+
+<use ../figs/sim3.pdf>
+Package pdftex.def Info: ../figs/sim3.pdf used on input line 71.
+(pdftex.def)             Requested size: 341.43306pt x 141.07521pt.
+) (../sections/prototype.tex
+<../figs/prototype.jpg, id=350, 602.25pt x 351.3125pt>
+File: ../figs/prototype.jpg Graphic file (type jpg)
+
+<use ../figs/prototype.jpg>
+Package pdftex.def Info: ../figs/prototype.jpg used on input line 4.
+(pdftex.def)             Requested size: 284.52756pt x 165.97995pt.
+) [12 <../figs/sim2.pdf>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
- [8] (./sections/conclusion.tex) [9] (./onn-main.bbl [10
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 91.
- [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
+(../sections/conclusion.tex) [13 <../figs/sim3.pdf>] [14 <../figs/prototype.jpg
+>] (./onn-main.bbl [15
 
-(./onn-main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
+] [16])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 88.
+ [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 88.
+ (./onn-main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `onn-main.out' has not changed.
 (rerunfilecheck)             Checksum: 3C86766321AB9949C1B860B6178A0566;124.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 88.
  ) 
 Here is how much of TeX's memory you used:
- 6940 strings out of 493488
- 99058 string characters out of 3141326
- 208154 words of memory out of 3000000
- 10059 multiletter control sequences out of 15000+200000
+ 7016 strings out of 493488
+ 100415 string characters out of 3141326
+ 209100 words of memory out of 3000000
+ 10103 multiletter control sequences out of 15000+200000
  11691 words of font info for 45 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 30i,10n,29p,1485b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,11n,29p,1488b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
 usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
-/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/
-2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/20
-12/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on onn-main.pdf (11 pages, 228998 bytes).
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/201
+2/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2012/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2012/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2012/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on onn-main.pdf (17 pages, 1662442 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 85 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 575 PDF objects out of 1000 (max. 8388607)
+ 365 compressed objects within 4 object streams
+ 107 named destinations out of 1000 (max. 500000)
+ 39 words of extra memory for PDF output out of 10000 (max. 10000000)
 

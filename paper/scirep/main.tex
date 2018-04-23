@@ -1,0 +1,105 @@
+\documentclass[fleqn,10pt]{wlscirep}
+\usepackage{graphicx, hyperref}
+\usepackage{amsmath,amssymb} % define this before the line numbering.
+\usepackage{color}
+
+\graphicspath{{../figs/}}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\title{ClassificationCam: How can optics be used in convolutional neural networks? (not final)}
+% (20 words or less)
+
+\author[1,*]{Julie Chang}
+\author[2]{Author Author}
+\author[1,2,+]{Author Author}
+\author[2,+]{Author Author}
+\affil[1]{Stanford University, Bioengineering Department, Stanford, 94305, USA}
+\affil[2]{Stanford University, Electrical Engineering Department, Stanford, 94305, USA}
+\affil[*]{corresponding.author@email.example}
+
+%\keywords{Keyword1, Keyword2, Keyword3}
+
+\begin{abstract}
+Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. Example Abstract. Abstract must be under 200 words and not include subheadings or citations. 
+\end{abstract}
+\begin{document}
+
+\flushbottom
+\maketitle
+% * <john.hammersley@gmail.com> 2015-02-09T12:07:31.197Z:
+%
+%  Click the title above to edit the author information and abstract
+%
+\thispagestyle{empty}
+
+\section*{Introduction}
+% The Introduction section, of referenced text\cite{Figueredo:2009dg} expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
+\label{sec:intro}
+\input{../sections/introduction}
+
+\section*{Related work}
+\label{sec:related}
+\input{../sections/related}
+
+\section*{Optical CNN Toolbox}
+\label{sec:toolbox}
+\input{../sections/toolbox}
+
+\section*{Learning an Optical CNN}
+\label{sec:simulation}
+\input{../sections/optimization}
+
+\section*{Evaluation of Optical CNNs}
+\label{sec:simulations}
+\input{../sections/simulations}
+
+\section*{Optical Prototype}
+\label{sec:prototype}
+\input{../sections/prototype}
+
+\section*{Discussion}
+% The Discussion should be succinct and must not contain subheadings.
+\label{sec:discussion}
+\begin{itemize}
+\item Not straightforward to generalize first optical conv. layer to multiple optical layers
+\item Discuss importance of negative weights – \red{Vincent?}
+\item Instead of trying to replicate a CNN exactly, could take advantage of optical transformations that aren't as practical in computations. For example, we use a 4f system for convolution, but this requires two extra lenses. Perhaps a single custom learned optical element can be used instead.
+\item In the future, exploit other properties of light (polarization, phase)	
+\item Specifically, coherent light and holography, photonics
+\end{itemize}
+
+\section*{Conclusion, p. 14}
+\label{sec:conclusion}
+\input{../sections/conclusion}
+
+\section*{Methods}
+% Topical subheadings are allowed. Authors must ensure that their Methods section includes adequate experimental and characterization data necessary for others in the field to reproduce their work.
+\subsection*{Training}
+Models were trained in Tensorflow.
+
+\subsection*{Phase mask fabrication}
+Phase masks were fabricated via multilayer lithography.
+
+\subsection*{Optical prototype}
+Laser light was scrambled through a rotating diffuser and illuminated a DMD. Images were relayed through a 4$f$ system consisting of two convex $f = 200$ mm lenses. Images were captured by a sCMOS camera (Hamamatsu ORCA-Flash 4.0).
+
+\bibliography{../bibliography}
+
+\section*{Acknowledgements (not compulsory)}
+
+Acknowledgements should be brief, and should not include thanks to anonymous referees and editors, or effusive comments. Grant or contribution numbers may be acknowledged.
+
+\section*{Author contributions statement}
+Must include all authors, identified by initials, for example:
+A.A. conceived the experiment(s),  A.A. and B.A. conducted the experiment(s), C.A. and D.A. analysed the results.  All authors reviewed the manuscript. 
+
+\section*{Additional information}
+
+To include, in this order: \textbf{Accession codes} (where applicable); \textbf{Competing financial interests} (mandatory statement). 
+
+The corresponding author is responsible for submitting a \href{http://www.nature.com/srep/policies/index.html#competing}{competing financial interests statement} on behalf of all authors of the paper. This statement must be included in the submitted article file.
+
+
+\end{document}

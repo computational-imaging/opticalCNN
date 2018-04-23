@@ -1,0 +1,20 @@
+\red{This may be moved to Methods.}
+
+To train our optical CNNs, we build the forward model of computational light transport in a Tensorflow framework and use built-in backpropagation and stochastic gradient-based optimizers to learn the weights, both of the PSFs and the optical elements.
+
+\subsection*{Spatial domain optimization}
+Our strategy to building understanding of optical CNNs was to begin with a vanilla CNN and incrementally add constraints and features unique to optical models. Hence we begin in the spatial domain, assuming there exist optical elements that can produce the PSFs found by the optimization. From a standard CNN, we remove biases, impose non-negativity on the input and weights, and reduce the number of channels of the kernels while increasing their height and width. We also substitute our own nonlinearities for the standard ReLU function. Since some of the PSFs we try to optimize are much larger than normal, we use an FFT-based convolution to increase speed. 
+
+\subsection*{Phase mask optimization}
+After spatial domain optimization, the task still remains of connecting these desired PSFs to an optical implementation. As mentioned earlier, the Fourier plane of a $4-f$ system can be modulated with an aperture transfer function (ATF) to control the incoherent PSF of the optical relay:
+\begin{equation} PSF(x,y) = |\mathcal{F}\{ATF(k_x, k_y)\}(x,y)|^2,\end{equation}
+where $ k_x = \frac{x}{\lambda f}$ and $k_y = \frac{y}{\lambda f}$ denote spatial frequencies and $\lambda$ is the wavelength of light. 
+The ATF is a potentially complex function that can be decomposed into amplitude and phase as $ATF = A(k_x, k_y)\cdot \exp(i \Delta \phi (k_x, k_y))$, where local amplitude $A$ can be implemented with a (usually binary) transparency mask, and phase shifts $\Delta \phi$ can be realized with a clear optical element of spatially varying thickness, which controls the optical path length and thereby phase shift induced by the element. To prevent loss of light and reduce the fabrication complexity of the ATF-defining optical element, we restrict our optimization to phase-only control. 
+
+Given the optimized PSF(s) from the spatial domain optimization, we now want to optimize phase masks that can generate these desired PSFs:
+\begin{equation} \underset{\phi}{\text{minimize}} \|PSF_\text{opt} - |\mathcal{F}\{e^{i\Delta \phi}\}|^2\|^2_\text{F}
+\end{equation}
+where $\|\cdot\|_\text{F}$ denotes the Frobenius norm.  Many different approaches have been taken to solve the phase retrieval problem \cite{shechtman2015phase}, but since we are already using a learning-based approach above, we can use the Tensorflow framework here as well. We initialize a random phase mask and propagate training images through the current iterate of the $4f$ system. An error is calculted against the ground truth images where the training images are convolved with the desired $PSF_\text{opt}$, and then the gradients are backpropagated to the phase masks. 
+
+\subsection*{End-to-end optimization}
+Instead of separately optimizing the PSFs and then the corresponding phase masks,  we also explored the possibility of an end-to-end optimization. To combine these steps into a single optimization problem, we implement a variant of the classification Tensorflow model where the phase mask heights were the optimizable parameter rather than the PSF weights themselves, such that the gradients of the classification error function are backpropagated all the way to the phase mask heights. Unfortunately, this approach did not always produce desired results, as we will show in the next section. 

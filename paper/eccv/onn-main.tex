@@ -8,7 +8,7 @@
 \usepackage{color}
 \usepackage[width=122mm,left=12mm,paperwidth=146mm,height=193mm,top=12mm,paperheight=217mm]{geometry}
 
-\graphicspath{{figs/}}
+\graphicspath{{../figs/}}
 
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
@@ -44,33 +44,30 @@ the abstract section}
 
 \section{Introduction}
 \label{sec:intro}
-\input{sections/introduction}
+\input{../sections/introduction}
 
 \section{Related work}
 \label{sec:related}
-\input{sections/related}
+\input{../sections/related}
 
 
-\section{ONN toolbox}
+\section{Optical CNN Toolbox}
 \label{sec:toolbox}
-\input{sections/toolbox}
+\input{../sections/toolbox}
 
-\section{Learning an optical CNN, p. 7}
+\section{Learning an Optical CNN}
 \label{sec:simulation}
-\input{sections/optimization}
+\input{../sections/optimization}
 
-\section{Simulations, pp. 8-10}
+\section{Evaluation of Optical CNNs}
 \label{sec:simulations}
-\input{sections/simulations}
+\input{../sections/simulations}
 
-\section{Optical prototype, pp. 10-11}
+\section{Optical Prototype}
 \label{sec:prototype}
-Implement the hybrid optoelectronic two-layer neural network. Goal is to show that the hybrid ONN can perform on par with the electronic ONN, with the same number of layers, and better than the electronic ONN with one fewer layer.\\
-\red{Fig. 4: optical setup} \\
-\red{Fig. 5: actual PSF and sample images} \\
-\red{Table. 2: results}
+\input{../sections/prototype}
 
-\section{Discussion, pp. 12-13}
+\section{Discussion}
 \label{sec:discussion}
 \begin{itemize}
 \item Not straightforward to generalize first optical conv. layer to multiple optical layers
@@ -82,7 +79,7 @@ Implement the hybrid optoelectronic two-layer neural network. Goal is to show th
 
 \section{Conclusion, p. 14}
 \label{sec:conclusion}
-\input{sections/conclusion}
+\input{../sections/conclusion}
 
 \clearpage
 

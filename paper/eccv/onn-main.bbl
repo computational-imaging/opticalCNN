@@ -129,6 +129,12 @@ Chang, J., Kauvar, I., Hu, X., Wetzstein, G.:
 \newblock In: Computer Vision and Pattern Recognition (CVPR), 2016 IEEE
   Conference on, IEEE (2016)  3737--3745
 
+\bibitem{gregory1986real}
+Gregory, D.A.:
+\newblock Real-time pattern recognition using a modified liquid crystal
+  television in a coherent optical correlator.
+\newblock Applied optics \textbf{25}(4) (1986)  467--469
+
 \bibitem{manzur2012optical}
 Manzur, T., Zeller, J., Serati, S.:
 \newblock Optical correlator based target detection, recognition,
@@ -192,5 +198,53 @@ He, K., Zhang, X., Ren, S., Sun, J.:
 Ramachandran, P., Zoph, B., Le, Q.:
 \newblock Searching for activation functions.
 \newblock (2017)
+
+\bibitem{downie1995nonlinear}
+Downie, J.D.:
+\newblock Nonlinear coherent optical image processing using logarithmic
+  transmittance of bacteriorhodopsin films.
+\newblock Applied optics \textbf{34}(23) (1995)  5210--5217
+
+\bibitem{thoma1991bacteriorhodopsin}
+Thoma, R., Oesterhelt, D., Hampp, N., Br{\"a}uchle, C.:
+\newblock Bacteriorhodopsin films as spatial light modulators for
+  nonlinear-optical filtering.
+\newblock Optics letters \textbf{16}(9) (1991)  651--653
+
+\bibitem{ulrich2017visible}
+Ulrich, S., Hemmer, J.R., Page, Z.A., Dolinski, N.D., Rifaie-Graham, O., Bruns,
+  N., Hawker, C.J., Boesel, L.F., Read~de Alaniz, J.:
+\newblock Visible light-responsive dasa-polymer conjugates.
+\newblock ACS Macro Letters \textbf{6}(7) (2017)  738--742
+
+\bibitem{dolinski2017versatile}
+Dolinski, N.D., Page, Z.A., Eisenreich, F., Niu, J., Hecht, S., Read~de Alaniz,
+  J., Hawker, C.J.:
+\newblock A versatile approach for in situ monitoring of photoswitches and
+  photopolymerizations.
+\newblock ChemPhotoChem \textbf{1}(4) (2017)  125--131
+
+\bibitem{lin2013network}
+Lin, M., Chen, Q., Yan, S.:
+\newblock Network in network.
+\newblock arXiv preprint arXiv:1312.4400 (2013)
+
+\bibitem{rippel2015spectral}
+Rippel, O., Snoek, J., Adams, R.P.:
+\newblock Spectral representations for convolutional neural networks.
+\newblock In: Advances in Neural Information Processing Systems. (2015)
+  2449--2457
+
+\bibitem{shechtman2015phase}
+Shechtman, Y., Eldar, Y.C., Cohen, O., Chapman, H.N., Miao, J., Segev, M.:
+\newblock Phase retrieval with application to optical imaging: a contemporary
+  overview.
+\newblock IEEE signal processing magazine \textbf{32}(3) (2015)  87--109
+
+\bibitem{shechtman2016multicolour}
+Shechtman, Y., Weiss, L.E., Backer, A.S., Lee, M.Y., Moerner, W.:
+\newblock Multicolour localization microscopy by point-spread-function
+  engineering.
+\newblock Nature photonics \textbf{10}(9) (2016)  590
 
 \end{thebibliography}
