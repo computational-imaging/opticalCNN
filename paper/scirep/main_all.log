@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  18 APR 2018 15:01
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 JUN 2018 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -697,27 +697,39 @@ Package microtype Info: Loading configuration file microtype.cfg.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2010/01/10 v2.4 microtype main configuration file (RS)
 ))
-(./main_all.aux)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty
+Package: xr 1994/05/28 v5.02 eXternal References (DPC)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/was/upgreek.sty
+Package: upgreek 2003/02/12 v2.0 (WaS)
+Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
+\symugrf@m=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
+(Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
+)
+Package xr Info: IMPORTING LABELS FROM supplementary.aux on input line 9.
+ (./main_all.aux)
 \openout1 = `main_all.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 27.
- (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 32.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+)
+(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count132
 \scratchdimen=\dimen156
@@ -783,7 +795,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 27.
+Package hyperref Info: Link coloring ON on input line 32.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -792,9 +804,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
-LaTeX Info: Redefining \nameref on input line 27.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (./main_all.out) (./main_all.out)
 \@outlinefile=\write3
@@ -806,8 +818,8 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 27.
-LaTeX Info: Redefining \microtypecontext on input line 27.
+(lastpage)             ! on input line 32.
+LaTeX Info: Redefining \microtypecontext on input line 32.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -821,45 +833,45 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 35.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 40.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 35.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 35
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 35
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 35
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 35
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 40
 .
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -867,96 +879,103 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+(/usr/local/texlive/2012/texmf-dist/tex/latex/microtype/mt-eur.cfg
+File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
+)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 40.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 40.
  [1
 
-{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `koppal2011wide' on page 2 undefined on input line 49.
-
-<../figs/convolution.pdf, id=55, 502.54349pt x 358.34276pt>
-File: ../figs/convolution.pdf Graphic file (type pdf)
-
-<use ../figs/convolution.pdf>
-Package pdftex.def Info: ../figs/convolution.pdf used on input line 65.
-(pdftex.def)             Requested size: 425.41444pt x 303.35158pt.
+{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <9> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 83.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 101.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <9> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 83.
- [2] [3 <../figs/convolution.pdf>] [4]
-<../figs/correlator.pdf, id=142, 464.403pt x 422.24449pt>
-File: ../figs/correlator.pdf Graphic file (type pdf)
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 101.
+ [3] [4] [5]
+Underfull \vbox (badness 2035) has occurred while \output is active []
 
-<use ../figs/correlator.pdf>
-Package pdftex.def Info: ../figs/correlator.pdf used on input line 134.
-(pdftex.def)             Requested size: 500.484pt x 455.07014pt.
- [5]
-<../figs/hybrid.pdf, id=156, 456.03777pt x 341.94449pt>
-File: ../figs/hybrid.pdf Graphic file (type pdf)
-
-<use ../figs/hybrid.pdf>
-Package pdftex.def Info: ../figs/hybrid.pdf used on input line 174.
-(pdftex.def)             Requested size: 500.484pt x 375.27397pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 213.
-
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
  [6]
-(./main_all.bbl [7]) [8] 
+[7] (./main_all.bbl [8])
+<../figs/convolution_v2.pdf, id=152, 502.54349pt x 253.94875pt>
+File: ../figs/convolution_v2.pdf Graphic file (type pdf)
+
+<use ../figs/convolution_v2.pdf>
+Package pdftex.def Info: ../figs/convolution_v2.pdf used on input line 259.
+(pdftex.def)             Requested size: 450.43253pt x 227.61789pt.
+
+<../figs/correlator_v2.pdf, id=153, 464.403pt x 236.38312pt>
+File: ../figs/correlator_v2.pdf Graphic file (type pdf)
+
+<use ../figs/correlator_v2.pdf>
+Package pdftex.def Info: ../figs/correlator_v2.pdf used on input line 266.
+(pdftex.def)             Requested size: 500.484pt x 254.75975pt.
+
+<../figs/hybrid_v2.pdf, id=156, 456.03777pt x 466.4095pt>
+File: ../figs/hybrid_v2.pdf Graphic file (type pdf)
+
+<use ../figs/hybrid_v2.pdf>
+Package pdftex.def Info: ../figs/hybrid_v2.pdf used on input line 274.
+(pdftex.def)             Requested size: 500.484pt x 511.87064pt.
+ 
 AED: lastpage setting LastPage
-[9] [10 <../figs/correlator.pdf>] [11 <../figs/hybrid.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
+[9] [10 <../figs/convolution_v2.pdf> <../figs/correlator_v2.pdf
+
+pdfTeX warning: /usr/texbin/pdflatex (file ../figs/correlator_v2.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>] [11 <../figs/hybrid_v2.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 281.
  (./main_all.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 281.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 281.
 Package rerunfilecheck Info: File `main_all.out' has not changed.
-(rerunfilecheck)             Checksum: 6D41DF0798B3ECF15855007F6D6F6F81;52.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
+(rerunfilecheck)             Checksum: CF123D270C02EA8670720CCB3C97BCAA;51.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
  ) 
 Here is how much of TeX's memory you used:
- 18100 strings out of 493488
- 347660 string characters out of 3141326
- 486017 words of memory out of 3000000
- 20921 multiletter control sequences out of 15000+200000
- 58623 words of font info for 233 fonts, out of 3000000 for 9000
+ 18175 strings out of 493488
+ 348175 string characters out of 3141326
+ 489520 words of memory out of 3000000
+ 20970 multiletter control sequences out of 15000+200000
+ 61839 words of font info for 249 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 43i,12n,72p,1758b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2012/t
-exmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-di
-st/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2012/texmf-dist/fon
-ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type
-1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/symbo
-l/usyr.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main_all.pdf (11 pages, 1070842 bytes).
+ 43i,12n,72p,2143b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{figure.caption.1} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2
+012/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/tex
+mf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2012/texmf-dis
+t/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts
+/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/
+symbol/usyr.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8
+a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
+r/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main_all.pdf (11 pages, 11207312 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 285 compressed objects within 3 object streams
+ 448 PDF objects out of 1000 (max. 8388607)
+ 292 compressed objects within 3 object streams
  58 named destinations out of 1000 (max. 500000)
  40472 words of extra memory for PDF output out of 42996 (max. 10000000)
 

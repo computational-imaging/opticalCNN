@@ -3,46 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main_all.aux
 The style file: naturemag-doi.bst
 Database file #1: ../bibliography.bib
-Warning--I didn't find a database entry for "koppal2011wide"
-You've used 33 entries,
+You've used 34 entries,
             2382 wiz_defined-function locations,
-            1182 strings with 15235 characters,
-and the built_in function-call counts, 14388 in all, are:
-= -- 1058
-> -- 372
+            1185 strings with 15521 characters,
+and the built_in function-call counts, 14955 in all, are:
+= -- 1096
+> -- 384
 < -- 1
-+ -- 186
-- -- 93
-* -- 1627
-:= -- 1530
-add.period$ -- 96
-call.type$ -- 33
-change.case$ -- 48
++ -- 192
+- -- 96
+* -- 1667
+:= -- 1577
+add.period$ -- 99
+call.type$ -- 34
+change.case$ -- 55
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 1247
-empty$ -- 1377
-format.name$ -- 122
-if$ -- 3034
+cite$ -- 34
+duplicate$ -- 1296
+empty$ -- 1451
+format.name$ -- 126
+if$ -- 3181
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 286
-newline$ -- 171
-num.names$ -- 33
-pop$ -- 326
+int.to.str$ -- 34
+missing$ -- 295
+newline$ -- 176
+num.names$ -- 34
+pop$ -- 355
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 354
+skip$ -- 388
 stack$ -- 0
-substring$ -- 660
-swap$ -- 1185
+substring$ -- 667
+swap$ -- 1220
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 87
-width$ -- 35
-write$ -- 359
-(There was 1 warning)
+while$ -- 90
+width$ -- 36
+write$ -- 369

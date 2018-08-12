@@ -51,6 +51,14 @@
 \newblock {\emph{\JournalTitle{arXiv preprint arXiv:1602.07360}}}
   (\bibinfo{year}{2016}).
 
+\bibitem{jouppi2017datacenter}
+\bibinfo{author}{Jouppi, N.~P.} \emph{et~al.}
+\newblock \bibinfo{title}{In-datacenter performance analysis of a tensor
+  processing unit}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 44th Annual
+  International Symposium on Computer Architecture}}, \bibinfo{pages}{1--12}
+  (\bibinfo{organization}{ACM}, \bibinfo{year}{2017}).
+
 \bibitem{gruev2002implementation}
 \bibinfo{author}{Gruev, V.} \& \bibinfo{author}{Etienne-Cummings, R.}
 \newblock \bibinfo{journal}{\bibinfo{title}{Implementation of steerable
@@ -177,7 +185,7 @@
 
 \bibitem{chen2016asp}
 \bibinfo{author}{Chen, H.~G.} \emph{et~al.}
-\newblock \bibinfo{title}{Asp vision: Optically computing the first layer of
+\newblock \bibinfo{title}{{ASP} vision: Optically computing the first layer of
   convolutional neural networks using angle sensitive pixels}.
 \newblock In \emph{\bibinfo{booktitle}{Proceedings of the IEEE Conference on
   Computer Vision and Pattern Recognition}}, \bibinfo{pages}{903--912}
@@ -207,6 +215,30 @@
 \newblock {\emph{\JournalTitle{Applied optics}}} \textbf{\bibinfo{volume}{34}},
   \bibinfo{pages}{3950--3962} (\bibinfo{year}{1995}).
 
+\bibitem{koppal2011wide}
+\bibinfo{author}{Koppal, S.~J.}, \bibinfo{author}{Gkioulekas, I.},
+  \bibinfo{author}{Zickler, T.} \& \bibinfo{author}{Barrows, G.~L.}
+\newblock \bibinfo{title}{Wide-angle micro sensors for vision on a tight
+  budget}.
+\newblock In \emph{\bibinfo{booktitle}{Computer Vision and Pattern Recognition
+  (CVPR), 2011 IEEE Conference on}}, \bibinfo{pages}{361--368}
+  (\bibinfo{organization}{IEEE}, \bibinfo{year}{2011}).
+
+\bibitem{shechtman2016multicolour}
+\bibinfo{author}{Shechtman, Y.}, \bibinfo{author}{Weiss, L.~E.},
+  \bibinfo{author}{Backer, A.~S.}, \bibinfo{author}{Lee, M.~Y.} \&
+  \bibinfo{author}{Moerner, W.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Multicolour localization microscopy
+  by point-spread-function engineering}}.
+\newblock {\emph{\JournalTitle{Nature photonics}}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{590} (\bibinfo{year}{2016}).
+
+\bibitem{chang2007hyperspectral}
+\bibinfo{author}{Chang, C.-I.}
+\newblock \emph{\bibinfo{title}{Hyperspectral data exploitation: theory and
+  applications}} (\bibinfo{publisher}{John Wiley \& Sons},
+  \bibinfo{year}{2007}).
+
 \bibitem{sun2013large}
 \bibinfo{author}{Sun, J.}, \bibinfo{author}{Timurdogan, E.},
   \bibinfo{author}{Yaacobi, A.}, \bibinfo{author}{Hosseini, E.~S.} \&
@@ -223,41 +255,16 @@
   Conference on}}, \bibinfo{pages}{1--2} (\bibinfo{organization}{IEEE},
   \bibinfo{year}{2013}).
 
-\bibitem{shechtman2015phase}
-\bibinfo{author}{Shechtman, Y.} \emph{et~al.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Phase retrieval with application to
-  optical imaging: a contemporary overview}}.
-\newblock {\emph{\JournalTitle{IEEE signal processing magazine}}}
-  \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{87--109}
-  (\bibinfo{year}{2015}).
-
-\bibitem{shechtman2016multicolour}
-\bibinfo{author}{Shechtman, Y.}, \bibinfo{author}{Weiss, L.~E.},
-  \bibinfo{author}{Backer, A.~S.}, \bibinfo{author}{Lee, M.~Y.} \&
-  \bibinfo{author}{Moerner, W.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Multicolour localization microscopy
-  by point-spread-function engineering}}.
-\newblock {\emph{\JournalTitle{Nature photonics}}}
-  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{590} (\bibinfo{year}{2016}).
-
-\bibitem{gibbs2012optical}
-\bibinfo{author}{Gibbs, H.}
-\newblock \emph{\bibinfo{title}{Optical bistability: controlling light with
-  light}} (\bibinfo{publisher}{Elsevier}, \bibinfo{year}{2012}).
-
-\bibitem{christodoulides2010nonlinear}
-\bibinfo{author}{Christodoulides, D.~N.}, \bibinfo{author}{Khoo, I.~C.},
-  \bibinfo{author}{Salamo, G.~J.}, \bibinfo{author}{Stegeman, G.~I.} \&
-  \bibinfo{author}{Van~Stryland, E.~W.}
-\newblock \bibinfo{journal}{\bibinfo{title}{Nonlinear refraction and
-  absorption: mechanisms and magnitudes}}.
-\newblock {\emph{\JournalTitle{Advances in Optics and Photonics}}}
-  \textbf{\bibinfo{volume}{2}}, \bibinfo{pages}{60--200}
-  (\bibinfo{year}{2010}).
-
 \bibitem{krizhevsky2009learning}
 \bibinfo{author}{Krizhevsky, A.} \& \bibinfo{author}{Hinton, G.}
 \newblock \bibinfo{title}{Learning multiple layers of features from tiny
   images} (\bibinfo{year}{2009}).
+
+\bibitem{peng2016diffractive}
+\bibinfo{author}{Peng, Y.}, \bibinfo{author}{Fu, Q.}, \bibinfo{author}{Heide,
+  F.} \& \bibinfo{author}{Heidrich, W.}
+\newblock \bibinfo{title}{The diffractive achromat: full spectrum computational
+  imaging with diffractive optics}.
+\newblock In \emph{\bibinfo{booktitle}{ACM SIGGRAPH}} (\bibinfo{year}{2016}).
 
 \end{thebibliography}
