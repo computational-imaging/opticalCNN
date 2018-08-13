@@ -7,7 +7,7 @@ from datetime import datetime
 import argparse
 import sys
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 import tensorflow as tf
 
@@ -40,7 +40,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
         keep_prob = tf.placeholder(tf.float32)
 
         x_image = tf.reshape(x, [-1, 28, 28, 1])
-        padamt = 28
+        padamt = 0
         dim = 28+2*padamt
         paddings = tf.constant([[0, 0,], [padamt, padamt], [padamt, padamt], [0, 0]])
         x_image = tf.pad(x_image, paddings)
@@ -50,7 +50,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
     with tf.device('/device:GPU:2'):
 
         doOpticalConv=False
-        doConv=True
+        doConv=False
         if doConv:
             if doOpticalConv:
                 doAmplitudeMask=True
@@ -61,11 +61,12 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
                 h_conv1 = tf.cast(h_conv1, dtype=tf.float32)
             else:
                 W_conv1 = weight_variable([dim, dim, 1, 1], name='W_conv1')
+                W_conv1 = nonneg(W_conv1)
                 W_conv1_im = tf.expand_dims(tf.expand_dims(tf.squeeze(W_conv1), 0),3)
                 optics.attach_summaries("W_conv1", W_conv1_im, image=True)
 
                 # W_conv1 = weight_variable([12, 12, 1, 9])
-                h_conv1 = activation(conv2d(x_image, nonneg(W_conv1)))            
+                h_conv1 = activation(conv2d(x_image, (W_conv1)))            
             
             optics.attach_summaries("h_conv1", h_conv1, image=True)
             h_conv1_drop = tf.nn.dropout(h_conv1, keep_prob)
@@ -86,6 +87,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
             with tf.name_scope('fc'):
                 fcsize = dim*dim
                 W_fc1 = weight_variable([fcsize, classes], name='W_fc1')
+                W_fc1 = nonneg(W_fc1)
                 
                 # visualize the FC weights
                 W_fc1_split = tf.reshape(tf.transpose(W_fc1), [classes, 28, 28])
@@ -97,7 +99,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
         
                 
                 h_conv1_flat = tf.reshape(x_image, [-1, fcsize])
-                y_out = (tf.matmul(h_conv1_flat, nonneg(W_fc1)))
+                y_out = (tf.matmul(h_conv1_flat, (W_fc1)))
 
         tf.summary.image('output', tf.reshape(y_out, [-1, 3, 3, 1]), 3)
 
@@ -127,6 +129,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
     saver = tf.train.Saver(max_to_keep=2)
     save_path = os.path.join(FLAGS.log_dir, 'model.ckpt')
     
+    # MNIST feed dict
     def get_feed(train):
         if train:
             x, y = mnist.train.next_batch(50)
@@ -140,6 +143,26 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
         y_filt = np.squeeze(y[indices,1:])
         
         return x_filt, y_filt
+    
+    # QuickDraw feed dict
+    # train_data = np.load('/media/data/Datasets/quickdraw/split/all_train.npy')
+    # test_data = np.load('/media/data/Datasets/quickdraw/split/all_test.npy')
+    # def get_feed(train, batch_size=50):
+    #     if train:
+    #         idcs = np.random.randint(0, np.shape(train_data)[0], batch_size)
+    #         x = train_data[idcs, :]
+            
+    #         categories = idcs//4000
+    #         y = np.zeros((batch_size, classes))
+    #         y[np.arange(batch_size), categories] = 1
+          
+    #    else:
+    #        x = test_data 
+    #        y = np.resize(np.equal(range(classes),0).astype(int),(100,classes))
+    #        for i in range(1,classes):
+    #            y = np.concatenate((y, np.resize(np.equal(range(classes),i).astype(int),(100,classes))), axis=0)
+        
+    #    return x, y
             
     x_test, y_test = get_feed(train=False)
     for i in range(FLAGS.num_iters):
@@ -189,7 +212,7 @@ def main(_):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--num_iters', type=int, default=8000,
+    parser.add_argument('--num_iters', type=int, default=10000,
                       help='Number of steps to run trainer.')
     parser.add_argument('--learning_rate', type=float, default=0.001,
                       help='Initial learning rate')
@@ -197,7 +220,7 @@ if __name__ == '__main__':
                       help='Keep probability for training dropout.')
     now = datetime.now()
     # run_id = now.strftime('%Y%m%d-%H%M%S')
-    run_id = 'tfconv'
+    run_id = 'fc_actual_nonneg'
     parser.add_argument(
       '--log_dir',
       type=str,

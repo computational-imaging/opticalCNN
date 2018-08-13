@@ -2,7 +2,7 @@ import model
 import layers.optics as optics
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 import numpy as np
 import tensorflow as tf
@@ -157,7 +157,6 @@ if __name__=='__main__':
     run_id = 'opticalcorrelator/'
     phasemask.fit(model_params = {'hm_reg_scale':1e-1},
                    opt_type = 'sgd_with_momentum',
-                   #opt_params = {'beta1':0.8, 'beta2':0.999, 'epsilon':1.},
                    opt_params = {'momentum':0.5, 'use_nesterov':True},
                    decay_type = 'polynomial',
                    decay_params = {'decay_steps':num_steps, 'end_learning_rate':1e-9},
@@ -165,5 +164,5 @@ if __name__=='__main__':
                    starter_learning_rate = 5e-3,
                    num_steps_until_save=500,
                    num_steps_until_summary=50,
-                   logdir = os.path.join('/media/data/checkpoints/onn/maskopt/', run_id),
+                   logdir = os.path.join('checkpoints/onn/maskopt/', run_id),
                    num_steps = num_steps)

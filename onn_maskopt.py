@@ -3,7 +3,7 @@ import layers.optics as optics
 from layers.utils import *
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+os.environ["CUDA_VISIBLE_DEVICES"]="2"
 
 import numpy as np
 import tensorflow as tf
@@ -13,38 +13,46 @@ from glob import glob
 from datetime import datetime
 
 class PhaseMaskModel(model.Model):
-    def __init__(self,
-                 dim, dims,
+    def __init__(self, psf_file,
+                 dim, wave_res,
                  wavelength,
                  pixel_size,
-                 n,
+                 n,  z_file,
                  ckpt_path):
 
         self.dim = dim
-        self.wave_resolution = dims
+        self.wave_resolution = wave_res
         self.wavelength = wavelength
         self.pixel_size = pixel_size
         self.n = n
-        self.r_NA = 35
+        self.r_NA = wave_res[0]/2
+        self.psf_file = psf_file
+        self.z_file = z_file
 
         super(PhaseMaskModel, self).__init__(name='PhaseMask_ONN', ckpt_path=ckpt_path)
 
     def _build_graph(self, x_train, hm_reg_scale, hm_init_type='random_normal'):
-        with tf.device('/device:GPU:0'):
-            sensordims = (self.dim,self.dim)
-            # Start with input image
-            input_img = x_train/tf.reduce_sum(x_train)
-            tf.summary.image('input_image', x_train)
-            
-            doAmplitudeMask=False
-            output_img = optical_conv_layer(input_img, hm_reg_scale, self.r_NA, n=self.n, wavelength=self.wavelength,
-                       coherent=False, amplitude_mask=doAmplitudeMask, name='maskopt')
-            
-            # output_img = optics.Sensor(input_is_intensities=False, resolution=sensordims)(output_img)
-            
-            # Attach images to summary
-            # tf.summary.image('output_image', output_img)
-            return output_img
+        #with tf.device('/device:GPU:0'):
+        sensordims = (self.dim,self.dim)
+        # Start with input image
+        input_img = x_train/tf.reduce_sum(x_train)
+        input_img = tf.image.resize_nearest_neighbor(input_img, size=wave_res)
+        tf.summary.image('input_image', input_img)
+
+        doAmplitudeMask=False
+        doZernike=False
+        z_modes=512
+        output_fullres = optical_conv_layer(input_img, hm_reg_scale, self.r_NA, n=self.n, wavelength=self.wavelength,
+                                            coherent=False, amplitude_mask=doAmplitudeMask, zernike=doZernike, 
+                                            n_modes=z_modes, zernike_file=self.z_file, name='maskopt')
+
+        # Attach images to summary
+        tf.summary.image('output_fullres', output_fullres)
+        
+        # output_img = optics.Sensor(input_is_intensities=False, resolution=sensordims)(output_img)
+        output_img = tf.image.resize_nearest_neighbor(output_fullres, size=sensordims)
+        
+        return output_img
 
     def _get_data_loss(self, model_output, ground_truth):
         model_output = tf.cast(model_output, tf.float32)
@@ -61,7 +69,7 @@ class PhaseMaskModel(model.Model):
     def _get_training_queue(self, batch_size, num_threads=4):
         dim = self.dim
         
-        file_list = tf.matching_files('/media/data/onn/mnistpadded/im_*.png')
+        file_list = tf.matching_files('/media/data/onn/quickdraw16_192/im_*.png')
         filename_queue = tf.train.string_input_producer(file_list)
       
         image_reader = tf.WholeFileReader()
@@ -87,7 +95,7 @@ class PhaseMaskModel(model.Model):
         image = tf.squeeze(image, 0)
 
         convolved_image = tf.expand_dims(image, 0)
-        psf = tf.convert_to_tensor(np.load('maskopt/opticalcorrelator_w-conv1.npy'), tf.float32)
+        psf = tf.convert_to_tensor(np.load(self.psf_file), tf.float32)
         psf /= tf.reduce_sum(psf)
         optics.attach_img('gt_psf', tf.expand_dims(tf.expand_dims(tf.squeeze(psf), 0), -1))
         
@@ -95,7 +103,7 @@ class PhaseMaskModel(model.Model):
         # psf = tf.transpose(psf, [1,2,0,3])
         
         pad = int(dim/2)
-        convolved_image = tf.abs(optics.fft_conv2d(fftpad(convolved_image, pad), fftpad_psf(psf, pad)))
+        convolved_image = tf.abs(optics.fft_conv2d(fftpad(convolved_image, pad), fftpad_psf(psf, pad), adjoint=True))
         convolved_image = fftunpad(convolved_image, pad)
         convolved_image = tf.squeeze(convolved_image,axis=0)
         convolved_image /= tf.reduce_sum(convolved_image)
@@ -112,30 +120,35 @@ class PhaseMaskModel(model.Model):
 if __name__=='__main__':
     tf.reset_default_graph()
 
-    dim = 84
-    dims = np.array((dim,dim))
-    wavelength = 532e-9
-    pixel_size = 10.8*1e-6
-    n=1.48
-    num_steps = 30000
+    dim = 192
+    scale = 6
+    wave_res = np.array((scale*dim,scale*dim))
+    wavelength = 550e-9
+    pixel_size = 6.5*1e-6
+    n = 1.5090 # 1.4599
+    num_steps = 200001
+    
+    psf_file = 'maskopt/quickdraw16_tiledpsf_2.npy'
+    z_file = 'zernike_volume_480.npy'
 
-    phasemask = PhaseMaskModel(dim, dims, wavelength, pixel_size, n, ckpt_path=None)
+    phasemask = PhaseMaskModel(psf_file, dim, wave_res, wavelength, pixel_size, n, z_file, ckpt_path=None)
 
-    # now = datetime.now()
-    run_id = 'opticalcorrelator/'
-    log_dir = os.path.join('/media/data/checkpoints/onn/maskopt/', run_id)
+    now = datetime.now()
+    run_id = 'tiledpsf_6x/' + now.strftime('%Y%m%d-%H%M%S') + '/'
+    log_dir = os.path.join('/media/data/checkpoints/onn/quickdraw16/singleconv/maskopt/', run_id)
     if tf.gfile.Exists(log_dir):
         tf.gfile.DeleteRecursively(log_dir)
     tf.gfile.MakeDirs(log_dir)
     
     phasemask.fit(model_params = {'hm_reg_scale':1e-1},
-                   opt_type = 'sgd_with_momentum',
+                   opt_type = 'ADAM',
                    #opt_params = {'beta1':0.8, 'beta2':0.999, 'epsilon':1.},
                    opt_params = {'momentum':0.5, 'use_nesterov':True},
                    decay_type = 'polynomial',
-                   decay_params = {'decay_steps':num_steps, 'end_learning_rate':1e-9},
+                   decay_params = {'decay_steps':num_steps, 'end_learning_rate':1e-10},
                    batch_size=1,
-                   starter_learning_rate = 5e-3,
+                   adadelta_learning_rate = 1, 
+                   starter_learning_rate = 0.0001,
                    num_steps_until_save=500,
                    num_steps_until_summary=50,
                    logdir = log_dir,

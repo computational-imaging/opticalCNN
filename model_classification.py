@@ -57,7 +57,7 @@ class ClassificationModel(abc.ABC):
                 data_loss_graph, accuracy = self._get_data_loss(model_output_graph, y_test)
 
         # Create a saver
-        self.saver = tf.train.Saver()
+        self.saver = tf.train.Saver(max_to_keep=3)
 
         if self.ckpt_path is not None:
             self.saver.restore(self.sess,self.ckpt_path)
@@ -185,9 +185,15 @@ class ClassificationModel(abc.ABC):
         if opt_type == 'ADAM':
             optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
                                                **opt_params)
+            print("ADAM")
         elif opt_type == 'sgd_with_momentum':
             optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate,
                                                **opt_params)
+            print("SGD")
+        elif opt_type == 'adadelta':
+            optimizer = tf.train.AdadeltaOptimizer(learning_rate=learning_rate, rho=.9)
+                                               #**opt_params)
+            print("Adadelta")
 
         if decay_type is not None:
             train_step = optimizer.minimize(total_loss_graph, global_step=global_step)
@@ -202,7 +208,7 @@ class ClassificationModel(abc.ABC):
 
         # Create a saver
         self.saver = tf.train.Saver(keep_checkpoint_every_n_hours=2,
-                                    max_to_keep=5)
+                                    max_to_keep=3)
 
         # Get all summaries
         summaries_merged = tf.summary.merge_all()
@@ -241,7 +247,7 @@ class ClassificationModel(abc.ABC):
                 if not step % num_steps_until_summary:
                     print("Writing summaries...")
                     summary = self.sess.run(summaries_merged)
-                    
+
                     summary_writer.add_summary(summary, step)
         except Exception as e:
             print("Training interrupted due to exception")
@@ -250,3 +256,5 @@ class ClassificationModel(abc.ABC):
         finally:
             coord.request_stop()
             coord.join(enqueue_threads)
+
+        return data_loss

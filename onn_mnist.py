@@ -1,7 +1,6 @@
 import numpy as np
 import math
 import timeit
-import matplotlib.pyplot as plt
 
 from datetime import datetime
 import argparse
@@ -47,7 +46,6 @@ def train(params, summary_every=100, print_every=250, save_every=1000, verbose=T
         tf.summary.image('input', x_image, 3)
 
     # build model
-    # with tf.device('/device:GPU:2'):
     if True:
         doOpticalConv=True
         if doOpticalConv:
@@ -246,7 +244,7 @@ if __name__ == '__main__':
     parser.add_argument(
       '--log_dir',
       type=str,
-      default=os.path.join('/media/data/checkpoints/onn/singleconv/', run_id),
+      default=os.path.join('checkpoints/mnist/', run_id),
       help='Summaries log directory')
     FLAGS, unparsed = parser.parse_known_args()
     tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

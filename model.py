@@ -139,6 +139,7 @@ class Model(abc.ABC):
             opt_params, # Parameters of optimization algorithm
             batch_size,
             starter_learning_rate,
+            adadelta_learning_rate,
             logdir,
             num_steps,
             num_steps_until_save,
@@ -183,11 +184,14 @@ class Model(abc.ABC):
             learning_rate = starter_learning_rate
 
         if opt_type == 'ADAM':
-            optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate,
-                                               **opt_params)
+            optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate) #,
+                                               #**opt_params)
         elif opt_type == 'sgd_with_momentum':
             optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate,
                                                **opt_params)
+        elif opt_type == 'adadelta':
+            optimizer = tf.train.AdadeltaOptimizer(learning_rate=adadelta_learning_rate, rho=.9)
+                                               #**opt_params)
 
         if decay_type is not None:
             train_step = optimizer.minimize(total_loss_graph, global_step=global_step)
