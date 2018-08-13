@@ -4,6 +4,8 @@ Under preparation...
 
 Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
+Additional code used to interface with prototype hardware is available upon request.
+
 # Paper
 
 Title: Hybrid optical-electronic convolutional neural networks with optimized diffractive optics for image classification
