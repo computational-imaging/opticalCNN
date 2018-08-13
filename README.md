@@ -2,7 +2,7 @@
 
 Under preparation...
 
-Our code was run with Python 3.5.5 and Tensorflow 1.9.0 on a 
+Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
 # Paper
 
