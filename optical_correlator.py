@@ -49,13 +49,13 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
     # build model
     with tf.device('/device:GPU:2'):
 
-        doOpticalConv=False
-        doConv=False
+        doOpticalConv=True # optimize opt-conv layer?
+        doConv=True # conv layer or fully connected layer?
         if doConv:
             if doOpticalConv:
-                doAmplitudeMask=True
+                doAmplitudeMask=False # amplitude or phase mask?
                 hm_reg_scale = 1e-2
-                r_NA = 35
+                r_NA = 35 # numerical aperture radius of mask, in  pixels
                 h_conv1 = optical_conv_layer(x_image, hm_reg_scale, r_NA, n=1.48, wavelength=532e-9,
                            activation=activation, amplitude_mask=doAmplitudeMask, name='opt_conv1')
                 h_conv1 = tf.cast(h_conv1, dtype=tf.float32)
@@ -84,6 +84,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
             y_out = tf.transpose(tf.reduce_max(h_conv1_split, axis=[2,3,4]))
         
         else:
+            # single fully connected layer instead, for comparison
             with tf.name_scope('fc'):
                 fcsize = dim*dim
                 W_fc1 = weight_variable([fcsize, classes], name='W_fc1')
