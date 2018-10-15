@@ -18,7 +18,8 @@ Link to our paper
 
 # Website
 
-Link to our project page
+Link to our project page:
+http://www.computationalimaging.org/publications/hybrid-optical-electronic-convolutional-neural-networks/
 
 # Data
 
