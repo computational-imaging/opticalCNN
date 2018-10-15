@@ -4,6 +4,11 @@ Under preparation...
 
 Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
+Main files:
+- optical_correlator.py: optimizes a simple model with a single optical convolutional layer, with options in the code to switch to a single tf.conv layer or fully connected layer.
+- onn_maskopt.py: optimizes a phase mask to correspond to a pre-computed PSF
+- more to be added
+
 Additional code used to interface with prototype hardware is available upon request.
 
 # Paper
@@ -18,7 +23,8 @@ Link to our paper
 
 # Website
 
-Link to our project page
+Link to our project page:
+http://www.computationalimaging.org/publications/hybrid-optical-electronic-convolutional-neural-networks/
 
 # Data
 
