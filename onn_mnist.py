@@ -239,8 +239,8 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.9,
                       help='Keep probability for training dropout.')
     now = datetime.now()
-    # run_id = now.strftime('%Y%m%d-%H%M%S')
-    run_id = 'optconv/'
+    run_id = now.strftime('%Y%m%d-%H%M%S')
+    # run_id = 'optconv/'
     parser.add_argument(
       '--log_dir',
       type=str,
