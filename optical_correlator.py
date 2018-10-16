@@ -47,7 +47,7 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
         tf.summary.image('input', x_image, 3)
 
     # build model
-    doOpticalConv=True # optimize opt-conv layer?
+    doOpticalConv=False # optimize opt-conv layer?
     doConv=True # conv layer or fully connected layer?
     if doConv:
         if doOpticalConv:
@@ -218,12 +218,11 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.9,
                       help='Keep probability for training dropout.')
     now = datetime.now()
-    # run_id = now.strftime('%Y%m%d-%H%M%S')
-    run_id = 'test'
+    run_id = now.strftime('%Y%m%d-%H%M%S')
     parser.add_argument(
       '--log_dir',
       type=str,
-      default=os.path.join('/media/data/checkpoints/onn/correlator/', run_id),
+      default=os.path.join('checkpoints/correlator/', run_id),
       help='Summaries log directory')
     FLAGS, unparsed = parser.parse_known_args()
     tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
