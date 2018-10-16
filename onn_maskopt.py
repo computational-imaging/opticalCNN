@@ -3,7 +3,8 @@ import layers.optics as optics
 from layers.utils import *
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+# comment out or change line below based on your machine
+os.environ["CUDA_VISIBLE_DEVICES"]= "3"
 
 import numpy as np
 import tensorflow as tf
@@ -17,8 +18,8 @@ class PhaseMaskModel(model.Model):
                  dim, wave_res,
                  wavelength,
                  pixel_size,
-                 n,  z_file,
-                 ckpt_path):
+                 n,  z_file=None,
+                 ckpt_path=None):
 
         self.dim = dim
         self.wave_resolution = wave_res
@@ -120,22 +121,22 @@ class PhaseMaskModel(model.Model):
 if __name__=='__main__':
     tf.reset_default_graph()
 
-    dim = 192
-    scale = 6
+    dim = 192 # based on input image size
+    scale = 4 # upsampling factor for phase mask
     wave_res = np.array((scale*dim,scale*dim))
     wavelength = 550e-9
     pixel_size = 6.5*1e-6
     n = 1.5090 # 1.4599
     num_steps = 200001
     
-    psf_file = 'maskopt/quickdraw16_tiledpsf_2.npy'
-    z_file = 'zernike_volume_480.npy'
+    # change this file based on desired PSF
+    psf_file = 'assets/quickdraw16_tiledpsf_2.npy'
 
-    phasemask = PhaseMaskModel(psf_file, dim, wave_res, wavelength, pixel_size, n, z_file, ckpt_path=None)
+    phasemask = PhaseMaskModel(psf_file, dim, wave_res, wavelength, pixel_size, n=n, ckpt_path=None)
 
     now = datetime.now()
-    run_id = 'tiledpsf_6x/' + now.strftime('%Y%m%d-%H%M%S') + '/'
-    log_dir = os.path.join('/media/data/checkpoints/onn/quickdraw16/singleconv/maskopt/', run_id)
+    run_id = 'quickdraw16_tiledpsf_4x/' + now.strftime('%Y%m%d-%H%M%S') + '/'
+    log_dir = os.path.join('checkpoints/maskopt/', run_id)
     if tf.gfile.Exists(log_dir):
         tf.gfile.DeleteRecursively(log_dir)
     tf.gfile.MakeDirs(log_dir)
