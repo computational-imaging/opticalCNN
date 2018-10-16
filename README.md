@@ -10,6 +10,7 @@ Main files:
 - jupyter notebooks are useful for visualization, but in the current state they rely on files that may not be added yet
 - more to be added
 
+Download quickdraw-16 training dataset: https://drive.google.com/file/d/1nD5NhRfEqiDao2FWX4X54uPnQWAyusyG/view?usp=sharing
 Additional code used to interface with prototype hardware is available upon request.
 
 # Paper
