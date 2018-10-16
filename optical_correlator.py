@@ -7,7 +7,7 @@ from datetime import datetime
 import argparse
 import sys
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
 
 import tensorflow as tf
 
@@ -40,69 +40,67 @@ def train(params, summary_every=100, save_every=2000, verbose=True):
         keep_prob = tf.placeholder(tf.float32)
 
         x_image = tf.reshape(x, [-1, 28, 28, 1])
-        padamt = 0
+        padamt = 28 # can change to 0 for fully connected
         dim = 28+2*padamt
         paddings = tf.constant([[0, 0,], [padamt, padamt], [padamt, padamt], [0, 0]])
         x_image = tf.pad(x_image, paddings)
         tf.summary.image('input', x_image, 3)
 
     # build model
-    with tf.device('/device:GPU:2'):
-
-        doOpticalConv=True # optimize opt-conv layer?
-        doConv=True # conv layer or fully connected layer?
-        if doConv:
-            if doOpticalConv:
-                doAmplitudeMask=False # amplitude or phase mask?
-                hm_reg_scale = 1e-2
-                r_NA = 35 # numerical aperture radius of mask, in  pixels
-                h_conv1 = optical_conv_layer(x_image, hm_reg_scale, r_NA, n=1.48, wavelength=532e-9,
-                           activation=activation, amplitude_mask=doAmplitudeMask, name='opt_conv1')
-                h_conv1 = tf.cast(h_conv1, dtype=tf.float32)
-            else:
-                W_conv1 = weight_variable([dim, dim, 1, 1], name='W_conv1')
-                W_conv1 = nonneg(W_conv1)
-                W_conv1_im = tf.expand_dims(tf.expand_dims(tf.squeeze(W_conv1), 0),3)
-                optics.attach_summaries("W_conv1", W_conv1_im, image=True)
-
-                # W_conv1 = weight_variable([12, 12, 1, 9])
-                h_conv1 = activation(conv2d(x_image, (W_conv1)))            
-            
-            optics.attach_summaries("h_conv1", h_conv1, image=True)
-            h_conv1_drop = tf.nn.dropout(h_conv1, keep_prob)
-            
-            # h_conv1_split = tf.split(h_conv1, 9, axis=3)
-            # h_conv1_tiled = tf.concat([tf.concat(h_conv1_split[:3], axis=1), 
-            #                            tf.concat(h_conv1_split[3:6], axis=1), 
-            #                            tf.concat(h_conv1_split[6:9], axis=1)], axis=2)
-            # tf.summary.image("h_conv1", h_conv1_tiled, 3)
-
-            split_1d = tf.split(h_conv1_drop, num_or_size_splits=3, axis=1)
-            h_conv1_split = tf.concat([tf.split(split_1d[0], num_or_size_splits=3, axis=2),
-                                       tf.split(split_1d[1], num_or_size_splits=3, axis=2),
-                                       tf.split(split_1d[2], num_or_size_splits=3, axis=2)], 0)
-            y_out = tf.transpose(tf.reduce_max(h_conv1_split, axis=[2,3,4]))
-        
+    doOpticalConv=True # optimize opt-conv layer?
+    doConv=True # conv layer or fully connected layer?
+    if doConv:
+        if doOpticalConv:
+            doAmplitudeMask=False # amplitude or phase mask?
+            hm_reg_scale = 1e-2
+            r_NA = 35 # numerical aperture radius of mask, in  pixels
+            h_conv1 = optical_conv_layer(x_image, hm_reg_scale, r_NA, n=1.48, wavelength=532e-9,
+                       activation=activation, amplitude_mask=doAmplitudeMask, name='opt_conv1')
+            h_conv1 = tf.cast(h_conv1, dtype=tf.float32)
         else:
-            # single fully connected layer instead, for comparison
-            with tf.name_scope('fc'):
-                fcsize = dim*dim
-                W_fc1 = weight_variable([fcsize, classes], name='W_fc1')
-                W_fc1 = nonneg(W_fc1)
-                
-                # visualize the FC weights
-                W_fc1_split = tf.reshape(tf.transpose(W_fc1), [classes, 28, 28])
-                W_fc1_split = tf.split(W_fc1_split, classes, axis=0)
-                W_fc1_tiled = tf.concat([tf.concat(W_fc1_split[:3], axis=2),
-                                         tf.concat(W_fc1_split[3:6], axis=2),
-                                         tf.concat(W_fc1_split[6:9], axis=2)], axis=1)
-                tf.summary.image("W_fc1", tf.expand_dims(W_fc1_tiled, 3))
-        
-                
-                h_conv1_flat = tf.reshape(x_image, [-1, fcsize])
-                y_out = (tf.matmul(h_conv1_flat, (W_fc1)))
+            W_conv1 = weight_variable([dim, dim, 1, 1], name='W_conv1')
+            W_conv1 = nonneg(W_conv1)
+            W_conv1_im = tf.expand_dims(tf.expand_dims(tf.squeeze(W_conv1), 0),3)
+            optics.attach_summaries("W_conv1", W_conv1_im, image=True)
 
-        tf.summary.image('output', tf.reshape(y_out, [-1, 3, 3, 1]), 3)
+            # W_conv1 = weight_variable([12, 12, 1, 9])
+            h_conv1 = activation(conv2d(x_image, (W_conv1)))            
+
+        optics.attach_summaries("h_conv1", h_conv1, image=True)
+        h_conv1_drop = tf.nn.dropout(h_conv1, keep_prob)
+
+        # h_conv1_split = tf.split(h_conv1, 9, axis=3)
+        # h_conv1_tiled = tf.concat([tf.concat(h_conv1_split[:3], axis=1), 
+        #                            tf.concat(h_conv1_split[3:6], axis=1), 
+        #                            tf.concat(h_conv1_split[6:9], axis=1)], axis=2)
+        # tf.summary.image("h_conv1", h_conv1_tiled, 3)
+
+        split_1d = tf.split(h_conv1_drop, num_or_size_splits=3, axis=1)
+        h_conv1_split = tf.concat([tf.split(split_1d[0], num_or_size_splits=3, axis=2),
+                                   tf.split(split_1d[1], num_or_size_splits=3, axis=2),
+                                   tf.split(split_1d[2], num_or_size_splits=3, axis=2)], 0)
+        y_out = tf.transpose(tf.reduce_max(h_conv1_split, axis=[2,3,4]))
+
+    else:
+        # single fully connected layer instead, for comparison
+        with tf.name_scope('fc'):
+            fcsize = dim*dim
+            W_fc1 = weight_variable([fcsize, classes], name='W_fc1')
+            W_fc1 = nonneg(W_fc1)
+
+            # visualize the FC weights
+            W_fc1_split = tf.reshape(tf.transpose(W_fc1), [classes, 28, 28])
+            W_fc1_split = tf.split(W_fc1_split, classes, axis=0)
+            W_fc1_tiled = tf.concat([tf.concat(W_fc1_split[:3], axis=2),
+                                     tf.concat(W_fc1_split[3:6], axis=2),
+                                     tf.concat(W_fc1_split[6:9], axis=2)], axis=1)
+            tf.summary.image("W_fc1", tf.expand_dims(W_fc1_tiled, 3))
+
+
+            h_conv1_flat = tf.reshape(x_image, [-1, fcsize])
+            y_out = (tf.matmul(h_conv1_flat, (W_fc1)))
+
+    tf.summary.image('output', tf.reshape(y_out, [-1, 3, 3, 1]), 3)
 
     # loss, train, acc
     with tf.name_scope('cross_entropy'):
@@ -221,7 +219,7 @@ if __name__ == '__main__':
                       help='Keep probability for training dropout.')
     now = datetime.now()
     # run_id = now.strftime('%Y%m%d-%H%M%S')
-    run_id = 'fc_actual_nonneg'
+    run_id = 'test'
     parser.add_argument(
       '--log_dir',
       type=str,
