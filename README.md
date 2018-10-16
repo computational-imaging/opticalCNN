@@ -5,6 +5,7 @@ Under preparation...
 Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
 Example to optimize an optical correlator for QuickDraw-16:
+
 0. Download quickdraw-16 training dataset (see below) into assets folder
 1. onn_quickdraw-16-tiled.py: optimizes a single-layer tiled kernel PSF model for the quickdraw-16 dataset
 2. Walk through ONNMaskOpt.ipynb until the "Visualization of phase mask optimization" section. You can use the saved checkpoint folder we link below, or the checkpoint from running onn_quickdraw-16-tiled.py
