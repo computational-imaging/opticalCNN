@@ -4,7 +4,7 @@ Under preparation...
 
 Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
-Example to optimize an optical correlator for QuickDraw-16:
+Example to optimize a single-layer optical correlator for QuickDraw-16:
 
 0. Download quickdraw-16 training dataset (see below) into assets folder
 1. onn_quickdraw-16-tiled.py: optimizes a single-layer tiled kernel PSF model for the quickdraw-16 dataset
@@ -15,6 +15,7 @@ Example to optimize an optical correlator for QuickDraw-16:
 Other code:
 - jupyter notebooks are useful for visualization, but in the current state they rely on files that may not be added yet
 - other scripts are added, but they are not completely demo-ready
+- the core code for hybrid two-layer networks have "hybrid" in the filename
 
 Downloads:
 - quickdraw-16 training dataset: https://drive.google.com/file/d/1nD5NhRfEqiDao2FWX4X54uPnQWAyusyG/view?usp=sharing (the test dataset is already in the assets folder) 
