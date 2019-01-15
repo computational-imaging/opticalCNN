@@ -1,4 +1,4 @@
-The ThreeDeconv.jl package is licensed under the following license:
+The opticalCNN package is licensed under the following license:
 
 Copyright (c) 2018, Stanford University
 
