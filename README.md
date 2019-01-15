@@ -39,4 +39,4 @@ http://www.computationalimaging.org/publications/hybrid-optical-electronic-convo
 
 # Data
 
-The CIFAR-10 dataset captured by our prototype is available at: []. The original images used in all experiments were downloaded directly from MNIST, CIFAR-10, or Google QuickDraw source websites. 
+The original images used in all experiments were downloaded directly from MNIST, CIFAR-10, or Google QuickDraw source websites. The If you are interested in the CIFAR-10 dataset captured by our prototype, please send us an email.
