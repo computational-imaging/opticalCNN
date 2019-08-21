@@ -27,7 +27,7 @@ Title: Hybrid optical-electronic convolutional neural networks with optimized di
 
 Authors: Julie Chang*, Vincent Sitzmann, Xiong Dun, Wolfgang Heidrich, and Gordon Wetzstein*
 
-*Correspondence to: juliechchang@gmail.com, gordon.wetzstein}@stanford.edu
+*Correspondence to: juliechchang@gmail.com, gordon.wetzstein@stanford.edu
 
 Link to our paper:
 https://www.nature.com/articles/s41598-018-30619-y
