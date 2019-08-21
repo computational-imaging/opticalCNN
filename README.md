@@ -1,7 +1,5 @@
 # opticalCNN
 
-Under preparation...
-
 Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
 
 Example to optimize a single-layer optical correlator for QuickDraw-16:
@@ -29,9 +27,10 @@ Title: Hybrid optical-electronic convolutional neural networks with optimized di
 
 Authors: Julie Chang*, Vincent Sitzmann, Xiong Dun, Wolfgang Heidrich, and Gordon Wetzstein*
 
-*Correspondence to: {jchang10, gordon.wetzstein}@stanford.edu
+*Correspondence to: juliechchang@gmail.com, gordon.wetzstein}@stanford.edu
 
-Link to our paper
+Link to our paper:
+https://www.nature.com/articles/s41598-018-30619-y
 
 # Website
 
