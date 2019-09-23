@@ -1,9 +1,9 @@
 # opticalCNN
 
-NOTE: If you have a more up-to-date version of scipy, you may need to change the scipy.misc.imsave function to imageio.imwrite. Also, it appears there is an unresolved bug that is producing different results when running the onn_maskopt.py function. I apologize I have not maintained the code as I have finished my PhD since working on this project. - Julie Chang
+Note 1: If you have a more up-to-date version of scipy, you may need to change the scipy.misc.imsave function to imageio.imwrite. 
+Note 2: The Tensorflow fft2 function may also have changed in more recent updates, which has caused some differences in optimization results.
 
-
-Our code was run with Python 3.5.5 and Tensorflow 1.9.0 
+Our code was run with Python 3.5.5 and Tensorflow 1.4.0. 
 
 Example to optimize a single-layer optical correlator for QuickDraw-16:
 
