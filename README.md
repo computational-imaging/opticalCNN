@@ -16,14 +16,14 @@ Example to optimize a single-layer optical correlator for QuickDraw-16:
 Example to optimize a hybrid two-layer CNN for CIFAR-10 (rough outline):
 0. Download the CIFAR-10 dataset.
 1. Train a network with hybrid_cifar10.py. There is much more code than necessary in this file from our experimenting. For similar conditions as in paper results, use:
-    params['doTiledConv'] = False
-    params['doOpticalConv'] = False
-    params['doAmplitudeMask'] = False
-    params['doZernike'] = False
-    params['doFC'] = True
-    params['isNonNeg'] = True
-    params['doOptNeg'] = True
-    params['doNonnegReg'] = False
+params['doTiledConv'] = False,
+params['doOpticalConv'] = False,
+params['doAmplitudeMask'] = False,
+params['doZernike'] = False,
+params['doFC'] = True,
+params['isNonNeg'] = True,
+params['doOptNeg'] = True,
+params['doNonnegReg'] = False
 2. Walk through the first sections of HybridNNMaskOpt.ipynb until "Extract optimized phase mask", making sure to save the tiled psf .npy file and training images for phase mask optimization. You'll need to change directories to suit your own needs.
 3. Optimize the phase mask for the weights of the learned convolutional kernels with hybrid_maskopt.py.
 3. Fine tune the fully-connected layer with the learned phase mask (code not available).
