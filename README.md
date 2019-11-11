@@ -14,6 +14,7 @@ Example to optimize a single-layer optical correlator for QuickDraw-16:
 4. Walk through ONNMaskOpt.ipynb from "Visualization of phase mask optimization" and plug in the checkpoint from onn_maskopt.py. 
 
 Example to optimize a hybrid two-layer CNN for CIFAR-10 (rough outline):
+
 0. Download the CIFAR-10 dataset.
 1. Train a network with hybrid_cifar10.py. There is much more code than necessary in this file from our experimenting. For similar conditions as in paper results, use:
 params['doTiledConv'] = False,
